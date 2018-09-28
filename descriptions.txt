@@ -1,0 +1,1654 @@
+CONFIG_64BIT=y	64-Bit installation
+CONFIG_X86_64=y	64-Bit architecture support
+CONFIG_X86=y	32-Bit mode
+CONFIG_INSTRUCTION_DECODER=y	Intel instruction interpreter
+CONFIG_PERF_EVENTS_INTEL_UNCORE=y	Include support for Intel uncore performance events
+CONFIG_OUTPUT_FORMAT="elf64-x86-64"
+CONFIG_ARCH_DEFCONFIG="arch/x86/configs/x86_64_defconfig"
+CONFIG_LOCKDEP_SUPPORT=y	Runtime locking correctness validator
+CONFIG_STACKTRACE_SUPPORT=y	Enables stacktrace
+CONFIG_HAVE_LATENCYTOP_SUPPORT=y	Support for latency analysis
+CONFIG_MMU=y	Memory Management Unit
+CONFIG_NEED_DMA_MAP_STATE=y
+CONFIG_NEED_SG_DMA_LENGTH=y
+CONFIG_GENERIC_ISA_DMA=y	Direct Memory Access Mapper
+CONFIG_GENERIC_BUG=y	Usage of bug tables
+CONFIG_GENERIC_BUG_RELATIVE_POINTERS=y	Bug Table uses relative pointers
+CONFIG_GENERIC_HWEIGHT=y	Hamming weight
+CONFIG_ARCH_MAY_HAVE_PC_FDC=y	Floppy support
+CONFIG_RWSEM_XCHGADD_ALGORITHM=y	R/W-Semaphores
+CONFIG_GENERIC_CALIBRATE_DELAY=y	Support for BOOT_PRINTK_DELAY option
+CONFIG_ARCH_HAS_CPU_RELAX=y	CPU idle mode
+CONFIG_ARCH_HAS_CACHE_LINE_SIZE=y	cache_line_size() function support
+CONFIG_HAVE_SETUP_PER_CPU_AREA=y
+CONFIG_NEED_PER_CPU_EMBED_FIRST_CHUNK=y
+CONFIG_NEED_PER_CPU_PAGE_FIRST_CHUNK=y	Internal parameters
+CONFIG_ARCH_HIBERNATION_POSSIBLE=y	Hibernate
+CONFIG_ARCH_SUSPEND_POSSIBLE=y	Standby
+CONFIG_ARCH_WANT_HUGE_PMD_SHARE=y
+CONFIG_ARCH_WANT_GENERAL_HUGETLB=y	Huge pages support
+CONFIG_ZONE_DMA32=y	32-bit DMA Zone
+CONFIG_AUDIT_ARCH=y
+CONFIG_ARCH_SUPPORTS_OPTIMIZED_INLINING=y
+CONFIG_ARCH_SUPPORTS_DEBUG_PAGEALLOC=y	Internal parameters for optimization and paging
+CONFIG_HAVE_INTEL_TXT=y	Intel Trusted Execution Technology
+CONFIG_X86_64_SMP=y	Symmetric multiprocessor system, supports more than one CPU
+CONFIG_X86_HT=y	Hyperthreading
+CONFIG_ARCH_HWEIGHT_CFLAGS="-fcall-saved-rdi -fcall-saved-rsi -fcall-saved-rdx -fcall-saved-rcx -fcall-saved-r8 -fcall-saved-r9 -fcall-saved-r10 -fcall-saved-r11"	Parameters for hamming weight
+CONFIG_ARCH_SUPPORTS_UPROBES=y	Supports tracing of user level functions such as readline()
+CONFIG_FIX_EARLYCON_MEM=y	Early Console (debugging)
+CONFIG_DEFCONFIG_LIST="/lib/modules/$UNAME_RELEASE/.config"
+CONFIG_IRQ_WORK=y	Support for interrupt requests
+CONFIG_BUILDTIME_EXTABLE_SORT=y	Sorts the exception table at build time for MIPS
+
+#
+# General setup
+#
+CONFIG_COMPILE_TEST Some drivers can be compiled on a different platform than they are intended to be run on. Despite they cannot be loaded there (or even when they load they cannot be used due to missing HW support), developers still, opposing to distributors, might want to build such drivers to compile-test them. If you are a developer and want to build everything available, say Y here. If you are a user/distributor, say N here to exclude useless drivers to be distributed.
+CONFIG_INIT_ENV_ARG_LIMIT=32    Maximum of each of the number of arguments and environment variables passed to init from the kernel command line.
+CONFIG_CROSS_COMPILE=""	Same as running 'make CROSS_COMPILE=prefix-' but stored for default make runs in this kernel build directory. You don't need to set this unless you want the configured kernel build directory to select the cross-compiler automatically.
+CONFIG_LOCALVERSION=""	Append an extra string to the end of your kernel version. This will show up when you type uname, for example. The string you set here will be appended after the contents of any files with a filename matching localversion* in your object and source tree, in that order. Your total string can be a maximum of 64 characters.
+CONFIG_HAVE_KERNEL_GZIP=y	GZIP Support
+CONFIG_HAVE_KERNEL_BZIP2=y	BZIP2 Support
+CONFIG_HAVE_KERNEL_LZMA=y	LZMA Support
+CONFIG_HAVE_KERNEL_XZ=y	XZ Support
+CONFIG_HAVE_KERNEL_LZO=y	LZO Support
+CONFIG_HAVE_KERNEL_LZ4=y	LZ4 Support
+CONFIG_KERNEL_GZIP=y    The old and tried gzip compression. It provides a good balance between compression ratio and decompression speed.
+CONFIG_DEFAULT_HOSTNAME="(none)"	This option determines the default system hostname before userspace calls sethostname(2). The kernel traditionally uses "(none)" here, but you may wish to use a different default here to make a minimal system more usable with less configuration.
+CONFIG_SWAP=y   This option allows you to choose whether you want to have support for so called swap devices or swap files in your kernel that are used to provide more virtual memory than the actual RAM present in your computer. If unsure say Y.
+CONFIG_SYSVIPC=y    Inter Process Communication is a suite of library functions and system calls which let processes (running programs) synchronize and exchange information. It is generally considered to be a good thing, and some programs won't run unless you say Y here. In particular, if you want to run the DOS emulator dosemu under Linux (read the DOSEMU-HOWTO, available from http://www.tldp.org/docs.html#howto), you'll need to say Y here.
+CONFIG_SYSVIPC_SYSCTL=y
+CONFIG_POSIX_MQUEUE=y   POSIX variant of message queues is a part of IPC. In POSIX message queues every message has a priority which decides about succession of receiving it by a process. If you want to compile and run programs written e.g. for Solaris with use of its POSIX message queues (functions mq_*) say Y here. POSIX message queues are visible as a filesystem called 'mqueue' and can be mounted somewhere if you want to do filesystem operations on message queues. If unsure, say Y.
+CONFIG_POSIX_MQUEUE_SYSCTL=y
+CONFIG_CROSS_MEMORY_ATTACH=y    Enabling this option adds the system calls process_vm_readv and process_vm_writev which allow a process with the correct privileges to directly read from or write to to another process's address space. See the man page for more details.
+CONFIG_USELIB=y This option enables the uselib syscall, a system call used in the dynamic linker from libc5 and earlier. glibc does not use this system call. If you intend to run programs built on libc5 or earlier, you may need to enable this syscall. Current systems running glibc can safely disable this.
+CONFIG_HAVE_ARCH_AUDITSYSCALL=y
+
+#
+# IRQ subsystem
+#
+CONFIG_GENERIC_IRQ_PROBE=y
+CONFIG_GENERIC_IRQ_SHOW=y
+CONFIG_GENERIC_IRQ_LEGACY_ALLOC_HWIRQ=y
+CONFIG_GENERIC_PENDING_IRQ=y
+CONFIG_IRQ_DOMAIN=y
+CONFIG_IRQ_FORCED_THREADING=y
+CONFIG_SPARSE_IRQ=y This enables support for sparse irqs. This is useful in general as most CPUs have a fairly sparse array of IRQ vectors, which the irq_desc then maps directly on to. Systems with a high number of off-chip IRQs will want to treat this as experimental until they have been independently verified.
+CONFIG_CLOCKSOURCE_WATCHDOG=y
+CONFIG_ARCH_CLOCKSOURCE_DATA=y
+CONFIG_CLOCKSOURCE_VALIDATE_LAST_CYCLE=y
+CONFIG_GENERIC_TIME_VSYSCALL=y
+CONFIG_GENERIC_CLOCKEVENTS=y
+CONFIG_GENERIC_CLOCKEVENTS_BUILD=y
+CONFIG_GENERIC_CLOCKEVENTS_BROADCAST=y
+CONFIG_GENERIC_CLOCKEVENTS_MIN_ADJUST=y
+CONFIG_GENERIC_CMOS_UPDATE=y
+
+#
+# Timers subsystem
+#
+CONFIG_TICK_ONESHOT=y
+CONFIG_NO_HZ_COMMON=y
+CONFIG_NO_HZ_IDLE=y This option enables a tickless idle system: timer interrupts will only trigger on an as-needed basis when the system is idle. This is usually interesting for energy saving. Most of the time you want to say Y here.
+CONFIG_NO_HZ=y  This is the old config entry that enables dynticks idle. We keep it around for a little while to enforce backward compatibility with older config files.
+CONFIG_HIGH_RES_TIMERS=y    This option enables high resolution timer support. If your hardware is not capable then this option only increases the size of the kernel image.
+
+#
+# CPU/Task time and stats accounting
+#
+CONFIG_TICK_CPU_ACCOUNTING=y    This is the basic tick based cputime accounting that maintains statistics about user, system and idle time spent on per jiffies granularity. If unsure, say Y.
+
+#
+# RCU Subsystem
+#
+CONFIG_TREE_RCU=y   This option selects the RCU implementation that is designed for very large SMP system with hundreds or thousands of CPUs. It also scales down nicely to smaller systems.
+CONFIG_RCU_STALL_COMMON=y   This option enables RCU CPU stall code that is common between the TINY and TREE variants of RCU. The purpose is to allow the tiny variants to disable RCU CPU stall warnings, while making these warnings mandatory for the tree variants.
+CONFIG_RCU_FANOUT=64    This option controls the fanout of hierarchical implementations of RCU, allowing RCU to work efficiently on machines with large numbers of CPUs. This value must be at least the fourth root of NR_CPUS, which allows NR_CPUS to be insanely large. The default value of RCU_FANOUT should be used for production systems, but if you are stress-testing the RCU implementation itself, small RCU_FANOUT values allow you to test large-system code paths on small(er) systems. Select a specific number if testing RCU itself. Take the default if unsure.
+CONFIG_RCU_FANOUT_LEAF=16   This option controls the leaf-level fanout of hierarchical implementations of RCU, and allows trading off cache misses against lock contention. Systems that synchronize their scheduling-clock interrupts for energy-efficiency reasons will want the default because the smaller leaf-level fanout keeps lock contention levels acceptably low. Very large systems (hundreds or thousands of CPUs) will instead want to set this value to the maximum value possible in order to reduce the number of cache misses incurred during RCU's grace-period initialization. These systems tend to run CPU-bound, and thus are not helped by synchronized interrupts, and thus tend to skew them, which reduces lock contention enough that large leaf-level fanouts work well. Take the default if unsure.
+CONFIG_BUILD_BIN2C=y
+CONFIG_IKCONFIG=y   This option enables the complete Linux kernel ".config" file contents to be saved in the kernel. It provides documentation of which kernel options are used in a running kernel or in an on-disk kernel. This information can be extracted from the kernel image file with the script scripts/extract-ikconfig and used as input to rebuild the current kernel or to build another kernel. It can also be extracted from a running kernel by reading /proc/config.gz if enabled (below).
+CONFIG_IKCONFIG_PROC=y  This option enables access to the kernel configuration file through /proc/config.gz.
+CONFIG_LOG_BUF_SHIFT=21 Select the minimal kernel log buffer size as a power of 2. The final size is affected by LOG_CPU_MAX_BUF_SHIFT config parameter, see below. Any higher size also might be forced by "log_buf_len" boot parameter.
+CONFIG_LOG_CPU_MAX_BUF_SHIFT=12 This option allows to increase the default ring buffer size according to the number of CPUs. The value defines the contribution of each CPU as a power of 2. The used space is typically only few lines however it might be much more when problems are reported, e.g. backtraces.
+CONFIG_HAVE_UNSTABLE_SCHED_CLOCK=y
+CONFIG_ARCH_SUPPORTS_NUMA_BALANCING=y
+CONFIG_ARCH_SUPPORTS_INT128=y
+CONFIG_CGROUPS=y    This option adds support for grouping sets of processes together, for use with process control subsystems such as Cpusets, CFS, memory controls or device isolation. See - Documentation/scheduler/sched-design-CFS.txt (CFS) - Documentation/cgroup-v1/ (features for grouping, isolation and resource control) Say N if unsure.
+CONFIG_CGROUP_FREEZER=y Provides a way to freeze and unfreeze all tasks in a cgroup.
+CONFIG_CGROUP_DEVICE=y  Provides a cgroup implementing whitelists for devices which a process in the cgroup can mknod or open.
+CONFIG_CPUSETS=y    This option will let you create and manage CPUSETs which allow dynamically partitioning a system into sets of CPUs and Memory Nodes and assigning tasks to run only within those sets. This is primarily useful on large SMP or NUMA systems. Say N if unsure.
+CONFIG_PROC_PID_CPUSET=y
+CONFIG_CGROUP_CPUACCT=y Provides a simple Resource Controller for monitoring the total CPU consumed by the tasks in a cgroup.
+CONFIG_RESOURCE_COUNTERS=y  This option enables controller independent resource accounting infrastructure that works with cgroups.
+CONFIG_CGROUP_SCHED=y   This feature lets CPU scheduler recognize task groups and control CPU bandwidth allocation to such task groups. It uses cgroups to group tasks.
+CONFIG_FAIR_GROUP_SCHED=y   This feature lets CPU scheduler recognize task groups and control CPU bandwidth allocation to such task groups.
+CONFIG_BLK_CGROUP=y Generic block IO controller cgroup interface. This is the common cgroup interface which should be used by various IO controlling policies.
+CONFIG_NAMESPACES=y Provides the way to make tasks work with different objects using the same id. For example same IPC id may refer to different objects or same user id or pid may refer to different tasks when used in different namespaces.
+CONFIG_UTS_NS=y Support uts namespaces. This allows containers, i.e. vservers, to use uts namespaces to provide different uts info for different servers. If unsure, say N.
+CONFIG_IPC_NS=y Support ipc namespaces. This allows containers, i.e. virtual environments, to use ipc namespaces to provide different ipc objects for different servers. If unsure, say N.
+CONFIG_USER_NS=y    Support user namespaces. This allows containers, i.e. vservers, to use user namespaces to provide different user info for different servers. If unsure, say N.
+CONFIG_PID_NS=y Support process id namespaces. This allows having multiple processes with the same pid as long as they are in different pid namespaces. This is a building block of containers. Unless you want to work with an experimental feature say N here.
+CONFIG_NET_NS=y Allow user space to create what appear to be multiple instances of the network stack.
+CONFIG_RELAY=y  This option enables support for relay interface support in certain file systems (such as debugfs). It is designed to provide an efficient mechanism for tools and facilities to relay large amounts of data from kernel space to user space. If unsure, say N.
+CONFIG_BLK_DEV_INITRD=y The initial RAM disk is a RAM disk that is loaded by the boot loader (loadlin or lilo) and that is mounted as root before the normal boot procedure. It is typically used to load modules needed to mount the "real" root file system, etc. See Documentation/initrd.txt for details.
+CONFIG_INITRAMFS_SOURCE=""  Initramfs source file(s)
+CONFIG_RD_GZIP=y    Support loading of a gzip encoded initial ramdisk or cpio buffer. If unsure, say Y.
+CONFIG_RD_LZ4=y Support loading of a LZ4 encoded initial ramdisk or cpio buffer If unsure, say N.
+CONFIG_SYSCTL=y The sysctl interface provides a means of dynamically changing certain kernel parameters and variables on the fly without requiring a recompile of the kernel or reboot of the system. The primary interface consists of a system call, but if you say Y to "/proc file system support", a tree of modifiable sysctl entries will be generated beneath the /proc/sys directory. They are explained in the files in Documentation/sysctl/. Note that enabling this option will enlarge the kernel by at least 8 KB. As it is generally a good thing, you should say Y here unless building a kernel for install/rescue disks or your system is very limited in memory.
+CONFIG_ANON_INODES=y    Enable anonymous inode source
+CONFIG_SYSCTL_EXCEPTION_TRACE=y
+CONFIG_HAVE_PCSPKR_PLATFORM=y
+CONFIG_BPF=y
+CONFIG_EXPERT=y This option allows certain base kernel options and settings to be disabled or tweaked. This is for specialized environments which can tolerate a "non-standard" kernel. Only use this if you really know what you are doing.
+CONFIG_SGETMASK_SYSCALL=y   sys_sgetmask and sys_ssetmask are obsolete system calls no longer supported in libc but still enabled by default in some architectures. If unsure, leave the default option here.
+CONFIG_SYSFS_SYSCALL=y  sys_sysfs is an obsolete system call no longer supported in libc. Note that disabling this option is more secure but might break compatibility with some systems. If unsure say Y here.
+CONFIG_SYSCTL_SYSCALL=y sys_sysctl uses binary paths that have been found challenging to properly maintain and use. The interface in /proc/sys using paths with ascii names is now the primary path to this information. If unsure say N here.
+CONFIG_KALLSYMS=y   Say Y here to let the kernel print out symbolic crash information and symbolic stack backtraces. This increases the size of the kernel somewhat, as all symbols have to be loaded into the kernel image.
+CONFIG_PRINTK=y This option enables normal printk support. Removing it eliminates most of the message strings from the kernel image and makes the kernel more or less silent. As this makes it very difficult to diagnose system problems, saying N here is strongly discouraged.
+CONFIG_BUG=y    Disabling this option eliminates support for BUG and WARN, reducing the size of your kernel image and potentially quietly ignoring numerous fatal conditions. You should only consider disabling this option for embedded systems with no facilities for reporting errors. Just say Y.
+CONFIG_ELF_CORE=y   Enable support for generating core dumps. Disabling saves about 4k.
+CONFIG_BASE_FULL=y  Disabling this option reduces the size of miscellaneous core kernel data structures. This saves memory on small machines, but may reduce performance.
+CONFIG_FUTEX=y  Disabling this option will cause the kernel to be built without support for "fast userspace mutexes". The resulting kernel may not run glibc-based applications correctly.
+CONFIG_EPOLL=y  Disabling this option will cause the kernel to be built without support for epoll family of system calls.
+CONFIG_SIGNALFD=y   Enable the signalfd() system call that allows to receive signals on a file descriptor. If unsure, say Y.
+CONFIG_TIMERFD=y    Enable the timerfd() system call that allows to receive timer events on a file descriptor. If unsure, say Y.
+CONFIG_EVENTFD=y    Enable the eventfd() system call that allows to receive both kernel notification (ie. KAIO) or userspace notifications. If unsure, say Y.
+CONFIG_SHMEM=y  The shmem is an internal filesystem used to manage shared memory. It is backed by swap and manages resource limits. It is also exported to userspace as tmpfs if TMPFS is enabled. Disabling this option replaces shmem and tmpfs with the much simpler ramfs code, which may be appropriate on small systems without swap.
+CONFIG_AIO=y    This option enables POSIX asynchronous I/O which may by used by some high performance threaded applications. Disabling this option saves about 7k.
+CONFIG_ADVISE_SYSCALLS=y    This option enables the madvise and fadvise syscalls, used by applications to advise the kernel about their future memory or file usage, improving performance. If building an embedded system where no applications use these syscalls, you can disable this option to save space.
+CONFIG_PCI_QUIRKS=y This enables workarounds for various PCI chipset bugs/quirks. Disable this only if your target machine is unaffected by PCI quirks.
+CONFIG_EMBEDDED=y   This option allows certain base kernel options and settings to be disabled or tweaked. This is for specialized environments which can tolerate a "non-standard" kernel. Only use this if you really know what you are doing.
+CONFIG_HAVE_PERF_EVENTS=y
+
+#
+# Kernel Performance Events And Counters
+#
+CONFIG_PERF_EVENTS=y    Enable kernel support for various performance events provided by software and hardware. Say Y if unsure.
+CONFIG_VM_EVENT_COUNTERS=y  VM event counters are needed for event counts to be shown. This option allows the disabling of the VM event counters on EXPERT systems. /proc/vmstat will only show page counts if VM event counters are disabled.
+CONFIG_SLUB_DEBUG=y SLUB has extensive debug support features. Disabling these can result in significant savings in code size. This also disables SLUB sysfs support. /sys/slab will not exist and there will be no support for cache validation etc.
+CONFIG_COMPAT_BRK=y Randomizing heap placement makes heap exploits harder, but it also breaks ancient binaries (including anything libc5 based). This option changes the bootup default to heap randomization disabled, and can be overridden at runtime by setting /proc/sys/kernel/randomize_va_space to 2. On non-ancient distros (post-2000 ones) N is usually a safe choice.
+CONFIG_SLUB=y   SLUB is a slab allocator that minimizes cache line usage instead of managing queues of cached objects (SLAB approach). Per cpu caching is realized using slabs of objects instead of queues of objects. SLUB can use memory efficiently and has enhanced diagnostics. SLUB is the default choice for a slab allocator.
+CONFIG_SLUB_CPU_PARTIAL=y   Per cpu partial caches accellerate objects allocation and freeing that is local to a processor at the price of more indeterminism in the latency of the free. On overflow these caches will be cleared which requires the taking of locks that may cause latency spikes. Typically one would choose no for a realtime system.
+CONFIG_TRACEPOINTS=y
+CONFIG_HAVE_OPROFILE=y
+CONFIG_OPROFILE_NMI_TIMER=y
+CONFIG_KPROBES=y
+CONFIG_OPTPROBES=y
+CONFIG_KPROBES_ON_FTRACE=y
+CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS=y
+CONFIG_ARCH_USE_BUILTIN_BSWAP=y
+CONFIG_KRETPROBES=y
+CONFIG_HAVE_IOREMAP_PROT=y
+CONFIG_HAVE_KPROBES=y
+CONFIG_HAVE_KRETPROBES=y
+CONFIG_HAVE_OPTPROBES=y
+CONFIG_HAVE_KPROBES_ON_FTRACE=y
+CONFIG_HAVE_ARCH_TRACEHOOK=y
+CONFIG_HAVE_DMA_ATTRS=y
+CONFIG_HAVE_DMA_CONTIGUOUS=y
+CONFIG_GENERIC_SMP_IDLE_THREAD=y
+CONFIG_HAVE_REGS_AND_STACK_ACCESS_API=y
+CONFIG_HAVE_DMA_API_DEBUG=y
+CONFIG_HAVE_HW_BREAKPOINT=y
+CONFIG_HAVE_MIXED_BREAKPOINTS_REGS=y
+CONFIG_HAVE_USER_RETURN_NOTIFIER=y
+CONFIG_HAVE_PERF_EVENTS_NMI=y
+CONFIG_HAVE_PERF_REGS=y
+CONFIG_HAVE_PERF_USER_STACK_DUMP=y
+CONFIG_HAVE_ARCH_JUMP_LABEL=y
+CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG=y
+CONFIG_HAVE_ALIGNED_STRUCT_PAGE=y
+CONFIG_HAVE_CMPXCHG_LOCAL=y
+CONFIG_HAVE_CMPXCHG_DOUBLE=y
+CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
+CONFIG_HAVE_CC_STACKPROTECTOR=y	An arch should select this symbol if: - its compiler supports the -fstack-protector option - it has implemented a stack canary (e.g. __stack_chk_guard)
+CONFIG_CC_STACKPROTECTOR_NONE=y	
+CONFIG_HAVE_CONTEXT_TRACKING=y
+CONFIG_HAVE_VIRT_CPU_ACCOUNTING_GEN=y
+CONFIG_HAVE_IRQ_TIME_ACCOUNTING=y
+CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE=y
+CONFIG_HAVE_ARCH_SOFT_DIRTY=y
+CONFIG_MODULES_USE_ELF_RELA=y
+CONFIG_HAVE_IRQ_EXIT_ON_IRQ_STACK=y
+
+#
+# GCOV-based kernel profiling
+#
+CONFIG_SLABINFO=y
+CONFIG_RT_MUTEXES=y
+CONFIG_BASE_SMALL=0	Disabling this option reduces the size of miscellaneous core kernel data structures. This saves memory on small machines, but may reduce performance.
+CONFIG_MODULES=y	Kernel modules are small pieces of compiled code which can be inserted in the running kernel, rather than being permanently built into the kernel. You use the "modprobe" tool to add (and sometimes remove) them. If you say Y here, many parts of the kernel can be built as modules (by answering M instead of Y where indicated): this is most useful for infrequently used options which are not required for booting. If unsure, say Y.
+CONFIG_MODULE_UNLOAD=y	Without this option you will not be able to unload any modules (note that some modules may not be unloadable anyway), which makes your kernel smaller, faster and simpler. If unsure, say Y.
+CONFIG_STOP_MACHINE=y	Need stop_machine() primitive.
+CONFIG_BLOCK=y	Provide block layer support for the kernel. Disable this option to remove the block layer support from the kernel. This may be useful for embedded devices. If this option is disabled: - block device files will become unusable - some filesystems (such as ext3) will become unavailable. Say Y here unless you know you really don't want to mount disks and suchlike.
+
+#
+# Partition Types
+#
+CONFIG_MSDOS_PARTITION=y    PC BIOS (MSDOS partition tables) support
+CONFIG_EFI_PARTITION=y  Say Y here if you would like to use hard disks under Linux which were partitioned using EFI GPT.
+
+#
+# IO Schedulers
+#
+CONFIG_IOSCHED_NOOP=y   The no-op I/O scheduler is a minimal scheduler that does basic merging and sorting. Its main uses include non-disk based block devices like memory devices, and specialised software or hardware environments that do their own scheduling and require only minimal assistance from the kernel.
+CONFIG_IOSCHED_CFQ=y    The CFQ I/O scheduler tries to distribute bandwidth equally among all processes in the system. It should provide a fair and low latency working environment, suitable for both desktop and server systems. This is the default I/O scheduler.
+CONFIG_DEFAULT_CFQ=y
+CONFIG_DEFAULT_IOSCHED="cfq"
+CONFIG_PADATA=y
+CONFIG_INLINE_SPIN_UNLOCK_IRQ=y
+CONFIG_INLINE_READ_UNLOCK=y
+CONFIG_INLINE_READ_UNLOCK_IRQ=y
+CONFIG_INLINE_WRITE_UNLOCK=y
+CONFIG_INLINE_WRITE_UNLOCK_IRQ=y
+CONFIG_ARCH_SUPPORTS_ATOMIC_RMW=y
+CONFIG_MUTEX_SPIN_ON_OWNER=y
+CONFIG_RWSEM_SPIN_ON_OWNER=y
+CONFIG_ARCH_USE_QUEUE_RWLOCK=y
+CONFIG_QUEUE_RWLOCK=y
+CONFIG_FREEZER=y    Enable freezer that is responsible for hibernation/suspend activities
+
+#
+# Processor type and features
+#
+CONFIG_ZONE_DMA=y
+CONFIG_SMP=y
+CONFIG_X86_FEATURE_NAMES=y
+CONFIG_X86_MPPARSE=y
+CONFIG_X86_EXTENDED_PLATFORM=y
+CONFIG_X86_SUPPORTS_MEMORY_FAILURE=y
+CONFIG_SCHED_OMIT_FRAME_POINTER=y
+CONFIG_NO_BOOTMEM=y
+CONFIG_GENERIC_CPU=y
+CONFIG_X86_INTERNODE_CACHE_SHIFT=6
+CONFIG_X86_L1_CACHE_SHIFT=6
+CONFIG_X86_TSC=y
+CONFIG_X86_CMPXCHG64=y
+CONFIG_X86_CMOV=y
+CONFIG_X86_MINIMUM_CPU_FAMILY=64
+CONFIG_X86_DEBUGCTLMSR=y
+CONFIG_CPU_SUP_INTEL=y
+CONFIG_CPU_SUP_AMD=y
+CONFIG_CPU_SUP_CENTAUR=y
+CONFIG_HPET_TIMER=y
+CONFIG_HPET_EMULATE_RTC=y
+CONFIG_DMI=y
+CONFIG_GART_IOMMU=y
+CONFIG_SWIOTLB=y
+CONFIG_IOMMU_HELPER=y
+CONFIG_NR_CPUS=32
+CONFIG_SCHED_MC=y
+CONFIG_PREEMPT_NONE=y
+CONFIG_X86_UP_APIC_MSI=y
+CONFIG_X86_LOCAL_APIC=y
+CONFIG_X86_IO_APIC=y
+CONFIG_X86_MCE=y
+CONFIG_X86_MCE_INTEL=y
+CONFIG_X86_MCE_AMD=y
+CONFIG_X86_MCE_THRESHOLD=y
+CONFIG_X86_THERMAL_VECTOR=y
+CONFIG_X86_MSR=y
+CONFIG_ARCH_PHYS_ADDR_T_64BIT=y
+CONFIG_ARCH_DMA_ADDR_T_64BIT=y
+CONFIG_DIRECT_GBPAGES=y
+CONFIG_ARCH_SPARSEMEM_ENABLE=y
+CONFIG_ARCH_SPARSEMEM_DEFAULT=y
+CONFIG_ARCH_SELECT_MEMORY_MODEL=y
+CONFIG_ILLEGAL_POINTER_VALUE=0xdead000000000000
+CONFIG_SELECT_MEMORY_MODEL=y
+CONFIG_SPARSEMEM_MANUAL=y
+CONFIG_SPARSEMEM=y
+CONFIG_HAVE_MEMORY_PRESENT=y
+CONFIG_SPARSEMEM_EXTREME=y
+CONFIG_SPARSEMEM_VMEMMAP_ENABLE=y
+CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER=y
+CONFIG_SPARSEMEM_VMEMMAP=y
+CONFIG_HAVE_MEMBLOCK=y
+CONFIG_HAVE_MEMBLOCK_NODE_MAP=y
+CONFIG_ARCH_DISCARD_MEMBLOCK=y
+CONFIG_PAGEFLAGS_EXTENDED=y
+CONFIG_SPLIT_PTLOCK_CPUS=4
+CONFIG_ARCH_ENABLE_SPLIT_PMD_PTLOCK=y
+CONFIG_PHYS_ADDR_T_64BIT=y
+CONFIG_ZONE_DMA_FLAG=1
+CONFIG_BOUNCE=y
+CONFIG_VIRT_TO_BUS=y
+CONFIG_DEFAULT_MMAP_MIN_ADDR=4096
+CONFIG_ARCH_SUPPORTS_MEMORY_FAILURE=y
+CONFIG_GENERIC_EARLY_IOREMAP=y
+CONFIG_X86_RESERVE_LOW=64
+CONFIG_MTRR=y
+CONFIG_ARCH_RANDOM=y	Enable the s390 architectural random number generation API to provide random data for all consumers within the Linux kernel. If unsure, say Y.
+CONFIG_X86_SMAP=y
+CONFIG_EFI=y
+CONFIG_EFI_STUB=y
+CONFIG_HZ_250=y
+CONFIG_HZ=250
+CONFIG_SCHED_HRTICK=y
+CONFIG_PHYSICAL_START=0x1000000
+CONFIG_RELOCATABLE=y
+CONFIG_PHYSICAL_ALIGN=0x1000000
+CONFIG_ARCH_ENABLE_MEMORY_HOTPLUG=y
+
+#
+# Power management and ACPI options
+#
+CONFIG_PM_RUNTIME=y Enable functionality allowing I/O devices to be put into energy-saving (low power) states at run time (or autosuspended) after a specified period of inactivity and woken up in response to a hardware-generated wake-up event or a driver's request. Hardware support is generally required for this functionality to work and the bus type drivers of the buses the devices are on are responsible for the actual handling of the autosuspend requests and wake-up events.
+CONFIG_PM=y Enable functionality allowing I/O devices to be put into energy-saving (low power) states, for example after a specified period of inactivity (autosuspended), and woken up in response to a hardware-generated wake-up event or a driver's request. Hardware support is generally required for this functionality to work and the bus type drivers of the buses the devices are on are responsible for the actual handling of device suspend requests and wake-up events.
+CONFIG_PM_DEBUG=y   This option enables various debugging support in the Power Management code. This is helpful when debugging and reporting PM bugs, like suspend support.
+CONFIG_PM_ADVANCED_DEBUG=y  Add extra sysfs attributes allowing one to access some Power Management fields of device objects from user space. If you are not a kernel developer interested in debugging/testing Power Management, say "no".
+CONFIG_ACPI=y   Advanced Configuration and Power Interface (ACPI) support for Linux requires an ACPI-compliant platform (hardware/firmware), and assumes the presence of OS-directed configuration and power management (OSPM) software. This option will enlarge your kernel by about 70K.
+CONFIG_ACPI_LEGACY_TABLES_LOOKUP=y
+CONFIG_ARCH_MIGHT_HAVE_ACPI_PDC=y
+CONFIG_ACPI_AC=y    This driver supports the AC Adapter object, which indicates whether a system is on AC or not. If you have a system that can switch between A/C and battery, say Y.
+CONFIG_ACPI_BUTTON=y    This driver handles events on the power, sleep, and lid buttons. A daemon reads events from input devices or via netlink and performs user-defined actions such as shutting down the system. This is necessary for software-controlled poweroff.
+CONFIG_ACPI_FAN=y   This driver supports ACPI fan devices, allowing user-mode applications to perform basic fan control (on, off, status).
+CONFIG_ACPI_DOCK=y  This driver supports ACPI-controlled docking stations and removable drive bays such as the IBM Ultrabay and the Dell Module Bay.
+CONFIG_ACPI_PROCESSOR=y This driver adds support for the ACPI Processor package. It is required by several flavors of cpufreq performance-state, thermal, throttling and idle drivers.
+CONFIG_ACPI_THERMAL=y   This driver supports ACPI thermal zones. Most mobile and some desktop systems support ACPI thermal zones. It is HIGHLY recommended that this option be enabled, as your processor(s) may be damaged without it.
+CONFIG_X86_PM_TIMER=y   The Power Management Timer is available on all ACPI-capable, in most cases even if ACPI is unusable or blacklisted. You should nearly always say Y here because many modern systems require this timer.
+CONFIG_HAVE_ACPI_APEI=y
+CONFIG_HAVE_ACPI_APEI_NMI=y
+
+#
+# CPU Frequency scaling
+#
+CONFIG_CPU_FREQ=y   Clock scaling allows you to change the clock speed of CPUs on the fly. This is a nice method to save battery power on notebooks, because the lower the clock speed, the less power the CPU consumes. If in doubt, say N.
+CONFIG_CPU_FREQ_STAT=y  Export CPU frequency statistics information through sysfs. If in doubt, say N.
+CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y   Use the CPUFreq governor 'performance' as default. This sets the frequency statically to the highest frequency supported by the CPU.
+CONFIG_CPU_FREQ_GOV_PERFORMANCE=y   This cpufreq governor sets the frequency statically to the highest available CPU frequency. If in doubt, say Y.
+
+#
+# x86 CPU frequency scaling drivers
+#
+CONFIG_X86_ACPI_CPUFREQ=y   This driver adds a CPUFreq driver which utilizes the ACPI Processor Performance States. This driver also supports Intel Enhanced Speedstep. If in doubt, say N.
+CONFIG_X86_ACPI_CPUFREQ_CPB=y   The powernow-k8 driver used to provide a sysfs knob called "cpb" to disable the Core Performance Boosting feature of AMD CPUs. This file has now been superseded by the more generic "boost" entry.
+CONFIG_X86_POWERNOW_K8=y    This adds the CPUFreq driver for mobile AMD Opteron/Athlon64 processors. If in doubt, say N.
+CONFIG_X86_SPEEDSTEP_CENTRINO=y This is deprecated and this functionality is now merged into acpi_cpufreq (X86_ACPI_CPUFREQ). Use that driver instead of speedstep_centrino. This adds the CPUFreq driver for Enhanced SpeedStep enabled mobile CPUs. This means Intel Pentium M (Centrino) CPUs or 64bit enabled Intel Xeons. If in doubt, say N.
+CONFIG_X86_P4_CLOCKMOD=y    This adds the CPUFreq driver for Intel Pentium 4 / XEON processors. If in doubt, say N.
+
+#
+# shared options
+#
+CONFIG_X86_SPEEDSTEP_LIB=y
+
+#
+# CPU Idle
+#
+CONFIG_CPU_IDLE=y   CPU idle is a generic framework for supporting software-controlled idle processor power management. It includes modular cross-platform governors that can be swapped during runtime. If you're using an ACPI-enabled platform, you should say Y here.
+CONFIG_CPU_IDLE_GOV_LADDER=y    Ladder governor (for periodic timer tick)
+CONFIG_CPU_IDLE_GOV_MENU=y  Menu governor (for tickless system)
+
+#
+# Memory power savings
+#
+
+#
+# Bus options (PCI etc.)
+#
+CONFIG_PCI=y
+CONFIG_PCI_DIRECT=y
+CONFIG_PCI_MMCONFIG=y
+CONFIG_PCI_DOMAINS=y
+CONFIG_PCI_MSI=y
+CONFIG_HT_IRQ=y
+CONFIG_PCI_ATS=y
+CONFIG_PCI_PRI=y
+CONFIG_PCI_PASID=y
+CONFIG_PCI_IOAPIC=y
+CONFIG_PCI_LABEL=y
+
+#
+# PCI host controller drivers
+#
+CONFIG_ISA_DMA_API=y
+CONFIG_AMD_NB=y
+
+#
+# Executable file formats / Emulations
+#
+CONFIG_BINFMT_ELF=y
+CONFIG_ARCH_BINFMT_ELF_RANDOMIZE_PIE=y
+CONFIG_BINFMT_SCRIPT=y
+CONFIG_COREDUMP=y
+CONFIG_X86_DEV_DMA_OPS=y
+CONFIG_PMC_ATOM=y
+CONFIG_NET=y    Unless you really know what you are doing, you should say Y here. The reason is that some programs need kernel networking support even when running on a stand-alone machine that isn't connected to any other computer. If you are upgrading from an older kernel, you should consider updating your networking tools too because changes in the kernel and the tools often go hand in hand.
+
+#
+# Networking options
+#
+CONFIG_PACKET=y	The Packet protocol is used by applications which communicate directly with network devices without an intermediate network protocol implemented in the kernel, e.g. tcpdump. If you want them to work, choose Y.
+CONFIG_UNIX=y	If you say Y here, you will include support for Unix domain sockets; sockets are the standard Unix mechanism for establishing and accessing network connections. Many commonly used programs such as the X Window system and syslog use these sockets even if your machine is not connected to any network. Unless you are working on an embedded system or something similar, you therefore definitely want to say Y here.
+CONFIG_XFRM=y	Linux implementation of IPSec
+CONFIG_XFRM_ALGO=y
+CONFIG_XFRM_USER=y
+CONFIG_XFRM_LOOKUP_MODULES=y
+CONFIG_XFRM_STATISTICS=y
+CONFIG_XFRM_IPCOMP=y
+CONFIG_XFRM_CP=y
+CONFIG_XFRM_CP_DEBUG=y
+CONFIG_INET=y	TCP/IP support
+CONFIG_IP_MULTICAST=y	This is code for addressing several networked computers at once, enlarging your kernel by about 2 KB. You need multicasting if you intend to participate in the MBONE, a high bandwidth network on top of the Internet which carries audio and video broadcasts. More information about the MBONE is on the WWW at http://www.savetz.com/mbone/. For most people, it's safe to say N.
+CONFIG_IP_ADVANCED_ROUTER=y	If you intend to run your Linux box mostly as a router, i.e. as a computer that forwards and redistributes network packets, say Y. If unsure, say N here.
+CONFIG_IP_MULTIPLE_TABLES=y	Normally, a router decides what to do with a received packet based solely on the packet's final destination address. If you say Y here, the Linux router will also be able to take the packet's source address into account. If unsure, say N. 
+CONFIG_INET_ESP=y	Support for IPsec ESP. If unsure, say Y.
+CONFIG_INET_IPCOMP=y	Support for IP Payload Compression Protocol (IPComp) (RFC3173), typically needed for IPsec. If unsure, say Y.
+CONFIG_INET_XFRM_TUNNEL=y
+CONFIG_INET_TUNNEL=y	Support for generic IP tunnel transformation, which is required by the IP tunneling module as well as tunnel mode IPComp. If unsure, say Y.
+CONFIG_INET_XFRM_MODE_TRANSPORT=y	Support for IPsec transport mode. If unsure, say Y.
+CONFIG_INET_XFRM_MODE_TUNNEL=y	Support for IPsec tunnel mode. If unsure, say Y.
+CONFIG_INET_DIAG=y	Support for INET (TCP, DCCP, etc) socket monitoring interface used by native Linux tools. If unsure, say Y.
+CONFIG_INET_TCP_DIAG=y
+CONFIG_TCP_CONG_CUBIC=y
+CONFIG_DEFAULT_TCP_CONG="cubic"
+CONFIG_IPV6=y	This is complemental support for the IP version 6. You will still be able to do traditional IPv4 networking as well.
+CONFIG_INET6_ESP=m	Support for IPsec ESP. If unsure, say Y.
+CONFIG_INET6_IPCOMP=m	Support for IP Payload Compression Protocol (IPComp) (RFC3173), typically needed for IPsec. If unsure, say Y.
+CONFIG_INET6_XFRM_TUNNEL=m
+CONFIG_INET6_TUNNEL=m	Support for generic IPv6-in-IPv6 tunnel transformation, which is required by the IPv6-in-IPv6 tunneling module as well as tunnel mode IPComp. If unsure, say Y.
+CONFIG_INET6_XFRM_MODE_TRANSPORT=m	Support for IPsec transport mode. If unsure, say Y.
+CONFIG_INET6_XFRM_MODE_TUNNEL=m	Support for IPsec tunnel mode. If unsure, say Y.
+CONFIG_IPV6_TUNNEL=m	Support for IPv6-in-IPv6 and IPv4-in-IPv6 tunnels described in RFC 2473. If unsure, say N.
+CONFIG_IPV6_MULTIPLE_TABLES=y	Support multiple routing tables.
+CONFIG_NET_PTP_CLASSIFY=y
+CONFIG_NETFILTER=y	Netfilter is a framework for filtering and mangling network packets that pass through your Linux box. Chances are that you should say Y here if you compile a kernel which will run as a router and N for regular hosts. If unsure, say N.
+CONFIG_NETFILTER_DEBUG=y	You can say Y here if you want to get additional messages useful in debugging the netfilter code.
+CONFIG_NETFILTER_ADVANCED=y	If you say Y here you can select between all the netfilter modules. If you say N the more unusual ones will not be shown and the basic ones needed by most people will default to 'M'. If unsure, say Y.
+CONFIG_BRIDGE_NETFILTER=y	Enabling this option will let arptables resp. iptables see bridged ARP resp. IP traffic. If you want a bridging firewall, you probably want this option enabled. Enabling or disabling this option doesn't enable or disable ebtables. If unsure, say N.
+
+#
+# Core Netfilter Configuration
+#
+CONFIG_NETFILTER_NETLINK=y  If this option is enabled, the kernel will include support for the new netfilter netlink interface.
+CONFIG_NETFILTER_NETLINK_QUEUE=y    If this option is enabled, the kernel will include support for queueing packets via NFNETLINK.
+CONFIG_NETFILTER_NETLINK_LOG=y  If this option is enabled, the kernel will include support for logging packets via NFNETLINK. This obsoletes the existing ipt_ULOG and ebg_ulog mechanisms, and is also scheduled to replace the old syslog-based ipt_LOG and ip6t_LOG modules.
+CONFIG_NF_CONNTRACK=y   Connection tracking keeps a record of what packets have passed through your machine, in order to figure out how they are related into connections. Layer 3 independent connection tracking is experimental scheme which generalize ip_conntrack to support other layer 3 protocols. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NF_LOG_COMMON=y
+CONFIG_NF_CONNTRACK_MARK=y  This option enables support for connection marks, used by the `CONNMARK' target and `connmark' match. Similar to the mark value of packets, but this mark value is kept in the conntrack session instead of the individual packets.
+CONFIG_NF_CONNTRACK_PROCFS=y    This option enables for the list of known conntrack entries to be shown in procfs under net/netfilter/nf_conntrack. This is considered obsolete in favor of using the conntrack(8) tool which uses Netlink.
+CONFIG_NF_CT_NETLINK=y  This option enables support for a netlink-based userspace interface
+CONFIG_NF_NAT=y The Full NAT option allows masquerading, port forwarding and other forms of full Network Address Port Translation. It is controlled by the `nat' table in iptables: see the man page for iptables(8). To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NF_NAT_NEEDED=y
+CONFIG_NETFILTER_XTABLES=y  This is required if you intend to use any of ip_tables, ip6_tables or arp_tables.
+
+#
+# Xtables combined modules
+#
+CONFIG_NETFILTER_XT_MARK=y  This option adds the "MARK" target and "mark" match. Netfilter mark matching allows you to match packets based on the "nfmark" value in the packet. The target allows you to create rules in the "mangle" table which alter the netfilter mark (nfmark) field associated with the packet. Prior to routing, the nfmark can influence the routing method and can also be used by other subsystems to change their behavior.
+CONFIG_NETFILTER_XT_CONNMARK=y  This option adds the "CONNMARK" target and "connmark" match. Netfilter allows you to store a mark value per connection (a.k.a. ctmark), similarly to the packet mark (nfmark). Using this target and match, you can set and match on this mark.
+
+#
+# Xtables targets
+#
+CONFIG_NETFILTER_XT_TARGET_CONNMARK=y   This is a backwards-compat option for the user's convenience (e.g. when running oldconfig). It selects NETFILTER_XT_CONNMARK (combined connmark/CONNMARK module).
+CONFIG_NETFILTER_XT_TARGET_DSCP=y   This option adds a `DSCP' target, which allows you to manipulate the IPv4/IPv6 header DSCP field (differentiated services codepoint). The DSCP field can have any value between 0x0 and 0x3f inclusive. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_HL=y This option adds the "HL" (for IPv6) and "TTL" (for IPv4) targets, which enable the user to change the hoplimit/time-to-live value of the IP header. While it is safe to decrement the hoplimit/TTL value, the modules also allow to increment and set the hoplimit value of the header to arbitrary values. This is EXTREMELY DANGEROUS since you can easily create immortal packets that loop forever on the network.
+CONFIG_NETFILTER_XT_TARGET_LOG=y    This option adds a `LOG' target, which allows you to create rules in any iptables table which records the packet header to the syslog. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_MARK=y   This is a backwards-compat option for the user's convenience (e.g. when running oldconfig). It selects NETFILTER_XT_MARK (combined mark/MARK module).
+CONFIG_NETFILTER_XT_NAT=y   This option enables the SNAT and DNAT targets. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_NFLOG=y  This option enables the NFLOG target, which allows to LOG messages through nfnetlink_log. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_NFQUEUE=y    This target replaced the old obsolete QUEUE target. As opposed to QUEUE, it supports 65535 different queues, not just one. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_REDIRECT=y   REDIRECT is a special case of NAT: all incoming connections are mapped onto the incoming interface's address, causing the packets to come to the local machine instead of passing through. This is useful for transparent proxies. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_TARGET_TCPMSS=y This option adds a `TCPMSS' target, which allows you to alter the MSS value of TCP SYN packets, to control the maximum size for that connection (usually limiting it to your outgoing interface's MTU minus 40). This is used to overcome criminally braindead ISPs or servers which block ICMP Fragmentation Needed packets. The symptoms of this problem are that everything works fine from your Linux firewall/router, but machines behind it can never exchange large packets: 1) Web browsers connect, then hang with no data received. 2) Small mail works fine, but large emails hang. 3) ssh works fine, but scp hangs after initial handshaking. To compile it as a module, choose M here. If unsure, say N.
+
+#
+# Xtables matches
+#
+CONFIG_NETFILTER_XT_MATCH_CGROUP=y  Socket/process control group matching allows you to match locally generated packets based on which net_cls control group processes belong to.
+CONFIG_NETFILTER_XT_MATCH_COMMENT=y This option adds a `comment' dummy-match, which allows you to put comments in your iptables ruleset. If you want to compile it as a module, say M here and read Documentation/kbuild/modules.txt. If unsure, say `N'.
+CONFIG_NETFILTER_XT_MATCH_CONNMARK=y    This is a backwards-compat option for the user's convenience (e.g. when running oldconfig). It selects NETFILTER_XT_CONNMARK (combined connmark/CONNMARK module).
+CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y   This is a general conntrack match module, a superset of the state match. It allows matching on additional conntrack information, which is useful in complex configurations, such as NAT gateways with multiple internet links or tunnels. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_DSCP=y    This option adds a `DSCP' match, which allows you to match against the IPv4/IPv6 header DSCP field (differentiated services codepoint). The DSCP field can have any value between 0x0 and 0x3f inclusive. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_ECN=y This option adds an "ECN" match, which allows you to match against the IPv4 and TCP header ECN fields. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_HL=y  HL matching allows you to match packets based on the hoplimit in the IPv6 header, or the time-to-live field in the IPv4 header of the packet.
+CONFIG_NETFILTER_XT_MATCH_LIMIT=y   limit matching allows you to control the rate at which a rule can be matched: mainly useful in combination with the LOG target ("LOG target support", below) and to avoid some Denial of Service attacks. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_MAC=y MAC matching allows you to match packets based on the source Ethernet address of the packet. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_MULTIPORT=y   Multiport matching allows you to match TCP or UDP packets based on a series of source or destination ports: normally a rule can only match a single range of ports. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_POLICY=y  Policy matching allows you to match packets based on the IPsec policy that was used during decapsulation/will be used during encapsulation. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_STATE=y   Connection state matching allows you to match packets based on their relationship to a tracked connection (ie. previous packets). This is a powerful tool for packet classification. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NETFILTER_XT_MATCH_TCPMSS=y  This option adds a `tcpmss' match, which allows you to examine the MSS value of TCP SYN packets, which control the maximum packet size for that connection. To compile it as a module, choose M here. If unsure, say N.
+
+#
+# IP: Netfilter Configuration
+#
+CONFIG_NF_DEFRAG_IPV4=y
+CONFIG_NF_CONNTRACK_IPV4=y  Connection tracking keeps a record of what packets have passed through your machine, in order to figure out how they are related into connections. This is IPv4 support on Layer 3 independent connection tracking. Layer 3 independent connection tracking is experimental scheme which generalize ip_conntrack to support other layer 3 protocols. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NF_CONNTRACK_PROC_COMPAT=y   This option enables /proc and sysctl compatibility with the old layer 3 dependent connection tracking. This is needed to keep old programs that have not been adapted to the new names working. If unsure, say Y.
+CONFIG_NF_LOG_ARP=m ARP packet logging
+CONFIG_NF_LOG_IPV4=y    IPv4 packet logging
+CONFIG_NF_REJECT_IPV4=y IPv4 packet rejection
+CONFIG_NF_NAT_IPV4=y    The IPv4 NAT option allows masquerading, port forwarding and other forms of full Network Address Port Translation. This can be controlled by iptables or nft.
+CONFIG_NF_NAT_MASQUERADE_IPV4=y IPv4 masquerade support
+CONFIG_IP_NF_IPTABLES=y iptables is a general, extensible packet identification framework. The packet filtering and full NAT (masquerading, port forwarding, etc) subsystems now use this: say `Y' or `M' here if you want to use either of those. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_MATCH_AH=y This match extension allows you to match a range of SPIs inside AH header of IPSec packets. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_MATCH_ECN=y    This option adds a `ECN' match, which allows you to match against the IPv4 and TCP header ECN fields. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_MATCH_TTL=y    This adds IP_NF_MATCH_TTL option, which enabled the user to match packets by their TTL value. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_FILTER=y   Packet filtering defines a table `filter', which has a series of rules for simple packet filtering at local input, forwarding and local output. See the man page for iptables(8). To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_TARGET_REJECT=y    The REJECT target allows a filtering rule to specify that an ICMP error should be issued in response to an incoming packet, rather than silently being dropped. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_NAT=y  The Full NAT option allows masquerading, port forwarding and other forms of full Network Address Port Translation. It is controlled by the `nat' table in iptables: see the man page for iptables(8). To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_TARGET_MASQUERADE=y    Masquerading is a special case of NAT: all outgoing connections are changed to seem to come from a particular interface's address, and if the interface goes down, those connections are lost. This is only useful for dialup accounts with dynamic IP address (ie. your IP address will be different on next dialup). To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_TARGET_REDIRECT=y  This is a backwards-compat option for the user's convenience (e.g. when running oldconfig). It selects NETFILTER_XT_TARGET_REDIRECT.
+CONFIG_IP_NF_MANGLE=y   This option adds a `mangle' table to iptables: see the man page for iptables(8). This table is used for various packet alterations which can effect how the packet is routed. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_TARGET_ECN=y   This option adds a `ECN' target, which can be used in the iptables mangle table. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP_NF_TARGET_TTL=y   This option adds a `TTL' target, which enables the user to modify the TTL value of the IP header. To compile it as a module, choose M here. If unsure, say N.
+
+#
+# IPv6: Netfilter Configuration
+#
+CONFIG_NF_DEFRAG_IPV6=y
+CONFIG_NF_CONNTRACK_IPV6=y  Connection tracking keeps a record of what packets have passed through your machine, in order to figure out how they are related into connections. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_NF_REJECT_IPV6=y IPv6 packet rejection
+CONFIG_NF_LOG_IPV6=y    IPv6 packet logging
+CONFIG_NF_NAT_IPV6=y    The IPv6 NAT option allows masquerading, port forwarding and other forms of full Network Address Port Translation. This can be controlled by iptables or nft.
+CONFIG_IP6_NF_IPTABLES=y    ip6tables is a general, extensible packet identification framework. Currently only the packet filtering and packet mangling subsystem for IPv6 use this, but connection tracking is going to follow. Say 'Y' or 'M' here if you want to use either of those. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP6_NF_FILTER=y  Packet filtering defines a table `filter', which has a series of rules for simple packet filtering at local input, forwarding and local output. See the man page for iptables(8). To compile it as a module, choose M here. If unsure, say N.
+CONFIG_IP6_NF_MANGLE=y  This option adds a `mangle' table to iptables: see the man page for iptables(8). This table is used for various packet alterations which can effect how the packet is routed. To compile it as a module, choose M here. If unsure, say N.
+CONFIG_STP=y
+CONFIG_BRIDGE=y If you say Y here, then your Linux box will be able to act as an Ethernet bridge, which means that the different Ethernet segments it is connected to will appear as one Ethernet to the participants. Several such bridges can work together to create even larger networks of Ethernets using the IEEE 802.1 spanning tree algorithm. As this is a standard, Linux bridges will cooperate properly with other third party bridge products. If unsure, say N.
+CONFIG_BRIDGE_IGMP_SNOOPING=y   If you say Y here, then the Ethernet bridge will be able selectively forward multicast traffic based on IGMP traffic received from each port. Say N to exclude this support and reduce the binary size. If unsure, say Y.
+CONFIG_HAVE_NET_DSA=y
+CONFIG_VLAN_8021Q=y Select this and you will be able to create 802.1Q VLAN interfaces on your ethernet interfaces. 802.1Q VLAN supports almost everything a regular ethernet interface does, including firewalling, bridging, and of course IP traffic. You will need the 'vconfig' tool from the VLAN project in order to effectively use VLANs. See the VLAN web page for more information: http://www.candelatech.com/~greear/vlan.html If unsure, say N.
+CONFIG_LLC=y
+CONFIG_NET_SCHED=y  When the kernel has several packets to send out over a network device, it has to decide which ones to send first, which ones to delay, and which ones to drop. This is the job of the packet scheduler, and several different algorithms for how to do this "fairly" have been proposed. The available schedulers are listed in the following questions; you can say Y to as many as you like. If unsure, say N now.
+
+#
+# Queueing/Scheduling
+#
+CONFIG_NET_SCH_CBQ=y    Say Y here if you want to use the Class-Based Queueing (CBQ) packet scheduling algorithm for some of your network devices. This algorithm classifies the waiting packets into a tree-like hierarchy of classes; the leaves of this tree are in turn scheduled by separate algorithms (called "disciplines" in this context).
+CONFIG_NET_SCH_HTB=y    Say Y here if you want to use the Hierarchical Token Buckets (HTB) packet scheduling algorithm for some of your network devices. See http://luxik.cdi.cz/~devik/qos/htb/ for complete manual and in-depth articles.
+CONFIG_NET_SCH_SFQ=y    Say Y here if you want to use the Stochastic Fairness Queueing (SFQ) packet scheduling algorithm for some of your network devices or as a leaf discipline for the CBQ scheduling algorithm (see the top of net/sched/sch_sfq.c for details and references about the SFQ algorithm).
+
+#
+# Classification
+#
+CONFIG_NET_CLS=y    The CBQ scheduling algorithm requires that network packets which are scheduled to be sent out over a network device be classified according to some criterion. If you say Y here, you will get a choice of several different packet classifiers with the following questions.
+CONFIG_NET_CLS_FW=y If you say Y here, you will be able to classify outgoing packets according to firewall criteria you specified.
+CONFIG_NET_EMATCH=y Say Y here if you want to use extended matches on top of classifiers and select the extended matches below.
+CONFIG_NET_EMATCH_STACK=32  Size of the local stack variable used while evaluating the tree of ematches. Limits the depth of the tree, i.e. the number of encapsulated precedences. Every level requires 4 bytes of additional stack space.
+CONFIG_NET_CLS_ACT=y    Say Y here if you want to use traffic control actions. Actions get attached to classifiers and are invoked after a successful classification. They are used to overwrite the classification result, instantly drop or redirect packets, etc.
+CONFIG_NET_SCH_FIFO=y
+CONFIG_RPS=y
+CONFIG_RFS_ACCEL=y
+CONFIG_XPS=y
+CONFIG_CGROUP_NET_CLASSID=y
+CONFIG_NET_RX_BUSY_POLL=y
+CONFIG_BQL=y
+CONFIG_NET_FLOW_LIMIT=y The network stack has to drop packets when a receive processing CPU's backlog reaches netdev_max_backlog. If a few out of many active flows generate the vast majority of load, drop their traffic earlier to maintain capacity for the other flows. This feature provides servers with many clients some protection against DoS by a single (spoofed) flow that greatly exceeds average workload.
+
+#
+# Network testing
+#
+CONFIG_FIB_RULES=y
+CONFIG_WIRELESS=y
+
+#
+# CFG80211 needs to be enabled for MAC80211
+#
+CONFIG_HAVE_BPF_JIT=y
+
+#
+# Device Drivers
+#
+
+#
+# Generic Driver Options
+#
+CONFIG_UEVENT_HELPER=y  Support for uevent helper
+CONFIG_UEVENT_HELPER_PATH="/sbin/hotplug"   To disable user space helper program execution at by default specify an empty string here. This setting can still be altered via /proc/sys/kernel/hotplug or via /sys/kernel/uevent_helper later at runtime.
+CONFIG_DEVTMPFS=y   Create a kernel maintained /dev tmpfs (EXPERIMENTAL)
+CONFIG_DEVTMPFS_MOUNT=y This will instruct the kernel to automatically mount the devtmpfs filesystem at /dev, directly after the kernel has mounted the root filesystem. The behavior can be overridden with the commandline parameter: devtmpfs.mount=0|1. This option does not affect initramfs based booting, here the devtmpfs filesystem always needs to be mounted manually after the rootfs is mounted. With this option enabled, it allows to bring up a system in rescue mode with init=/bin/sh, even when the /dev directory on the rootfs is completely empty.
+CONFIG_STANDALONE=y Select this option if you don't have magic firmware for drivers that need it. If unsure, say Y.
+CONFIG_PREVENT_FIRMWARE_BUILD=y Disable drivers features which enable custom firmware building
+CONFIG_FW_LOADER=y  This enables the firmware loading facility in the kernel. The kernel will first look for built-in firmware, if it has any. Next, it will look for the requested firmware in a series of filesystem paths: o firmware_class path module parameter or kernel boot param o /lib/firmware/updates/UTS_RELEASE o /lib/firmware/updates o /lib/firmware/UTS_RELEASE o /lib/firmware Enabling this feature only increases your kernel image by about 828 bytes, enable this option unless you are certain you don't need firmware.
+CONFIG_FIRMWARE_IN_KERNEL=y Various drivers in the kernel source tree may require firmware, which is generally available in your distribution's linux-firmware package. Say 'N' and let firmware be loaded from userspace.
+CONFIG_EXTRA_FIRMWARE=""    External firmware blobs to build into the kernel binary
+CONFIG_ALLOW_DEV_COREDUMP=y This option controls if the device coredump mechanism is available or not; if disabled, the mechanism will be omitted even if drivers that can use it are enabled. Say 'N' for more sensitive systems or systems that don't want to ever access the information to not have the code, nor keep any data. If unsure, say Y.
+CONFIG_DEBUG_DEVRES=y   This option enables kernel parameter devres.log. If set to non-zero, devres debug messages are printed. Select this if you are having a problem with devres or want to debug resource management for a managed device. devres.log can be switched on and off from sysfs node. If you are unsure about this, Say N here.
+CONFIG_GENERIC_CPU_AUTOPROBE=y
+
+#
+# Bus devices
+#
+CONFIG_ARCH_MIGHT_HAVE_PC_PARPORT=y Select this config option from the architecture Kconfig if the architecture might have PC parallel port hardware.
+CONFIG_PNP=y    Plug and Play (PnP) is a standard for peripherals which allows those peripherals to be configured by software, e.g. assign IRQ's or other parameters. No jumpers on the cards are needed, instead the values are provided to the cards from the BIOS, from the operating system, or using a user-space utility. If unsure, say Y.
+CONFIG_PNP_DEBUG_MESSAGES=y Say Y here if you want the PNP layer to be able to produce debugging messages if needed. The messages can be enabled at boot-time with the pnp.debug kernel parameter. If you have any doubts about this, say Y here.
+
+#
+# Protocols
+#
+CONFIG_PNPACPI=y    Linux uses the PNPACPI to autodetect built-in mainboard resources (e.g. parallel port resources). If you would like the kernel to detect and allocate resources to your mainboard devices (on some systems they are disabled by the BIOS) say Y here. Also the PNPACPI can help prevent resource conflicts between mainboard devices and other bus devices.
+CONFIG_BLK_DEV=y    Say Y here to get to see options for various different block device drivers. This option alone does not add any kernel code. If you say N, all options in this submenu will be skipped and disabled; only do this if you know what you are doing.
+CONFIG_BLK_DEV_FD=m Normal floppy disk support
+CONFIG_BLK_DEV_LOOP=y   Loopback device support
+CONFIG_BLK_DEV_LOOP_MIN_COUNT=8 Number of loop devices to pre-create at init time
+CONFIG_BLK_DEV_RAM=y    Saying Y here will allow you to use a portion of your RAM memory as a block device, so that you can make file systems on it, read and write to it and do all the other things that you can do with normal block devices (such as hard drives). It is usually used to load and store a copy of a minimal root file system off of a floppy into RAM during the initial install of Linux. Most normal users won't need the RAM disk functionality, and can thus say N here.
+CONFIG_BLK_DEV_RAM_COUNT=16 The default value is 16 RAM disks. Change this if you know what you are doing. If you boot from a filesystem that needs to be extracted in memory, you will need at least one RAM disk (e.g. root on cramfs).
+CONFIG_BLK_DEV_RAM_SIZE=8192    The default value is 4096 kilobytes. Only change this if you know what you are doing.
+CONFIG_VIRTIO_BLK=m This is the virtual block driver for virtio. It can be used with lguest or QEMU based VMMs (like KVM or Xen). Say Y or M.
+
+#
+# Misc devices
+#
+
+#
+# EEPROM support
+#
+
+#
+# Texas Instruments shared transport line discipline
+#
+
+#
+# Altera FPGA firmware download module
+#
+
+#
+# Intel MIC Bus Driver
+#
+
+#
+# Intel MIC Host Driver
+#
+
+#
+# Intel MIC Card Driver
+#
+CONFIG_HAVE_IDE=y
+
+#
+# SCSI device support
+#
+CONFIG_SCSI_MOD=y
+CONFIG_SCSI=y
+CONFIG_SCSI_DMA=y
+CONFIG_SCSI_PROC_FS=y
+
+#
+# SCSI support type (disk, tape, CD-ROM)
+#
+CONFIG_BLK_DEV_SD=y If you want to use SCSI hard disks, Fibre Channel disks, Serial ATA (SATA) or Parallel ATA (PATA) hard disks, USB storage or the SCSI or parallel port version of the IOMEGA ZIP drive, say Y and read the SCSI-HOWTO, the Disk-HOWTO and the Multi-Disk-HOWTO, available from http://www.tldp.org/docs.html#howto. This is NOT for SCSI CD-ROMs.
+CONFIG_BLK_DEV_SR=y If you want to use a CD or DVD drive attached to your computer by SCSI, FireWire, USB or ATAPI, say Y and read the SCSI-HOWTO and the CDROM-HOWTO at http://www.tldp.org/docs.html#howto. Make sure to say Y or M to "ISO 9660 CD-ROM file system support".
+CONFIG_CHR_DEV_SG=y If you want to use SCSI scanners, synthesizers or CD-writers or just about anything having "SCSI" in its name other than hard disks, CD-ROMs or tapes, say Y here. These won't be supported by the kernel directly, so you need some additional software which knows how to talk to these devices using the SCSI protocol. If unsure, say N.
+
+#
+# SCSI Transports
+#
+CONFIG_ATA=y
+CONFIG_ATA_VERBOSE_ERROR=y
+CONFIG_ATA_ACPI=y
+
+#
+# Controllers with non-SFF native interface
+#
+CONFIG_SATA_AHCI=y
+CONFIG_ATA_SFF=y
+
+#
+# SFF controllers with custom DMA interface
+#
+CONFIG_ATA_BMDMA=y
+
+#
+# SATA SFF controllers with BMDMA
+#
+CONFIG_ATA_PIIX=y
+CONFIG_SATA_VIA=y
+
+#
+# PATA SFF controllers with BMDMA
+#
+CONFIG_PATA_AMD=y
+CONFIG_PATA_IT821X=y
+CONFIG_PATA_VIA=y
+
+#
+# PIO-only SFF controllers
+#
+
+#
+# Generic fallback / legacy drivers
+#
+CONFIG_MD=y
+CONFIG_BLK_DEV_MD=y
+CONFIG_MD_AUTODETECT=y
+CONFIG_BLK_DEV_DM_BUILTIN=y
+CONFIG_BLK_DEV_DM=y
+CONFIG_DM_MIRROR=y
+CONFIG_DM_ZERO=y
+
+#
+# IEEE 1394 (FireWire) support
+#
+CONFIG_NETDEVICES=y You can say N here if you don't intend to connect your Linux box to any other computer at all. You'll have to say Y if your computer contains a network card that you want to use under Linux. If you are going to run SLIP or PPP over telephone line or null modem cable you need say Y here. Connecting two machines with parallel ports using PLIP needs this, as well as AX.25/KISS for sending Internet traffic over amateur radio links. If unsure, say Y.
+CONFIG_MII=y    Most ethernet controllers have MII transceiver either as an external or internal device. It is safe to say Y or M here even if your ethernet card lacks MII.
+CONFIG_NET_CORE=y   You can say N here if you do not intend to use any of the networking core drivers (i.e. VLAN, bridging, bonding, etc.)
+CONFIG_BONDING=y    Say 'Y' or 'M' if you wish to be able to 'bond' multiple Ethernet Channels together. This is called 'Etherchannel' by Cisco, 'Trunking' by Sun, 802.3ad by the IEEE, and 'Bonding' in Linux.
+CONFIG_DUMMY=m  This is essentially a bit-bucket device (i.e. traffic you send to this device is consigned into oblivion) with a configurable IP address. It is most commonly used in order to make your currently inactive SLIP address seem like a real address for local programs. If you use SLIP or PPP, you might want to say Y here. It won't enlarge your kernel. What a deal. Read about it in the Network Administrator's Guide, available from http://www.tldp.org/docs.html#guide.
+CONFIG_TUN=m    TUN/TAP provides packet reception and transmission for user space programs. It can be viewed as a simple Point-to-Point or Ethernet device, which instead of receiving packets from a physical media, receives them from user space program and instead of sending packets via physical media writes them to the user space program. If you don't know what to use this for, you don't need it.
+CONFIG_VIRTIO_NET=m This is the virtual network driver for virtio. It can be used with lguest or QEMU based VMMs (like KVM or Xen). Say Y or M.
+
+#
+# CAIF transport drivers
+#
+
+#
+# Distributed Switch Architecture drivers
+#
+CONFIG_ETHERNET=y   This section contains all the Ethernet device drivers.
+CONFIG_MDIO=y
+CONFIG_NET_VENDOR_3COM=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_VORTEX=y
+CONFIG_TYPHOON=y
+CONFIG_NET_VENDOR_ADAPTEC=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_AGERE=y   If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_ALTEON=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_AMD=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_PCNET32=y
+CONFIG_NET_VENDOR_ARC=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_ATHEROS=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_ATL2=m
+CONFIG_ATL1=m
+CONFIG_NET_VENDOR_BROADCOM=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_B44=m
+CONFIG_B44_PCI_AUTOSELECT=y
+CONFIG_B44_PCICORE_AUTOSELECT=y
+CONFIG_B44_PCI=y
+CONFIG_BNX2=m
+CONFIG_TIGON3=m
+CONFIG_NET_VENDOR_BROCADE=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_CHELSIO=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_CISCO=y   If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_DEC=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_DLINK=y   If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_EMULEX=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_EXAR=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_HP=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_INTEL=y   If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_E100=m
+CONFIG_E1000=m
+CONFIG_E1000E=m
+CONFIG_IGB=m
+CONFIG_IGB_HWMON=y
+CONFIG_IXGBE=y
+CONFIG_NET_VENDOR_I825XX=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_MARVELL=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_SKGE=m
+CONFIG_SKY2=y
+CONFIG_NET_VENDOR_MELLANOX=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_MICREL=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_MYRI=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_NATSEMI=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_8390=y
+CONFIG_NE2K_PCI=y
+CONFIG_NET_VENDOR_NVIDIA=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_FORCEDETH=y
+CONFIG_NET_VENDOR_OKI=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_PACKET_ENGINE=y
+CONFIG_NET_VENDOR_QLOGIC=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_QUALCOMM=y    If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_REALTEK=y If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_8139CP=y
+CONFIG_8139TOO=y
+CONFIG_8139TOO_PIO=y
+CONFIG_R8169=y
+CONFIG_NET_VENDOR_RDC=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SAMSUNG=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SEEQ=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SILAN=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SIS=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SMSC=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_STMICRO=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_SUN=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_TEHUTI=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_TI=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_NET_VENDOR_VIA=y	If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_VIA_RHINE=y
+CONFIG_VIA_VELOCITY=y
+CONFIG_NET_VENDOR_WIZNET=y  If you have a network (Ethernet) card belonging to this class, say Y.
+CONFIG_PHYLIB=y
+
+#
+# MII PHY device drivers
+#
+CONFIG_PPP=m
+CONFIG_PPP_BSDCOMP=m
+CONFIG_PPP_DEFLATE=m
+CONFIG_PPPOE=m
+CONFIG_PPP_ASYNC=m
+CONFIG_SLHC=m
+CONFIG_USB_NET_DRIVERS=y    USB Network Adapters
+CONFIG_WLAN=y
+
+#
+# Enable WiMAX (Networking options) to see the WiMAX drivers
+#
+
+#
+# Input device support
+#
+CONFIG_INPUT=y  Say Y here if you have any input device (mouse, keyboard, tablet, joystick, steering wheel ...) connected to your system and want it to be available to applications. This includes standard PS/2 keyboard and mouse. Say N here if you have a headless (no monitor, no keyboard) system. If unsure, say Y.
+CONFIG_INPUT_FF_MEMLESS=y   Say Y here if you have memoryless force-feedback input device such as Logitech WingMan Force 3D, ThrustMaster FireStorm Dual Power 2, or similar. You will also need to enable hardware-specific driver. If unsure, say N.
+
+#
+# Userland interfaces
+#
+
+#
+# Input Device Drivers
+#
+CONFIG_INPUT_KEYBOARD=y Say Y here, and a list of supported keyboards will be displayed. This option doesn't affect the kernel. If unsure, say Y.
+CONFIG_KEYBOARD_ATKBD=y Say Y here if you want to use a standard AT or PS/2 keyboard. Usually you'll need this, unless you have a different type keyboard (USB, ADB or other). This also works for AT and PS/2 keyboards connected over a PS/2 to serial converter. If unsure, say Y.
+
+#
+# Hardware I/O ports
+#
+CONFIG_SERIO=y  Say Yes here if you have any input device that uses serial I/O to communicate with the system. This includes the * standard AT keyboard and PS/2 mouse * as well as serial mice, Sun keyboards, some joysticks and 6dof devices and more. If unsure, say Y.
+CONFIG_ARCH_MIGHT_HAVE_PC_SERIO=y   Select this config option from the architecture Kconfig if the architecture might use a PC serio device (i8042) to communicate with keyboard, mouse, etc.
+CONFIG_SERIO_I8042=y    i8042 is the chip over which the standard AT keyboard and PS/2 mouse are connected to the computer. If you use these devices, you'll need to say Y here. If unsure, say Y.
+CONFIG_SERIO_LIBPS2=y   Say Y here if you are using a driver for device connected to a PS/2 port, such as PS/2 mouse or standard AT keyboard.
+
+#
+# Character devices
+#
+CONFIG_TTY=y
+CONFIG_VT=y
+CONFIG_CONSOLE_TRANSLATIONS=y
+CONFIG_VT_CONSOLE=y
+CONFIG_HW_CONSOLE=y
+CONFIG_VT_HW_CONSOLE_BINDING=y
+CONFIG_UNIX98_PTYS=y
+CONFIG_LEGACY_PTYS=y
+CONFIG_LEGACY_PTY_COUNT=256
+
+#
+# Serial drivers
+#
+CONFIG_SERIAL_EARLYCON=y
+CONFIG_SERIAL_8250=y
+CONFIG_SERIAL_8250_DEPRECATED_OPTIONS=y
+CONFIG_SERIAL_8250_PNP=y
+CONFIG_SERIAL_8250_CONSOLE=y
+CONFIG_SERIAL_8250_PCI=y
+CONFIG_SERIAL_8250_NR_UARTS=4
+CONFIG_SERIAL_8250_RUNTIME_UARTS=4
+
+#
+# Non-8250 serial port support
+#
+CONFIG_SERIAL_CORE=y
+CONFIG_SERIAL_CORE_CONSOLE=y
+CONFIG_HW_RANDOM=y	Hardware Random Number Generator Core infrastructure. If unsure, say Y.
+CONFIG_HW_RANDOM_INTEL=y	This driver provides kernel-side support for the Random Number Generator hardware found on Intel i8xx-based motherboards. If unsure, say Y.
+CONFIG_HW_RANDOM_AMD=y	This driver provides kernel-side support for the Random Number Generator hardware found on AMD 76x-based motherboards. If unsure, say Y.
+CONFIG_HW_RANDOM_VIA=y	This driver provides kernel-side support for the Random Number Generator hardware found on VIA based motherboards. If unsure, say Y.
+
+#
+# I2C support
+#
+CONFIG_I2C=m    I2C (pronounce: I-squared-C) is a slow serial bus protocol used in many micro controller applications and developed by Philips. SMBus, or System Management Bus is a subset of the I2C protocol. More information is contained in the directory Documentation/i2c/, especially in the file called "summary" there. If you want I2C support, you should say Y here and also to the specific driver for your bus adapter(s) below.
+CONFIG_I2C_BOARDINFO=y
+CONFIG_I2C_COMPAT=y Say Y here if you intend to run lm-sensors 3.1.1 or older, or any other user-space package which expects i2c adapters to be class devices. If you don't know, say Y.
+CONFIG_I2C_HELPER_AUTO=y    Some I2C bus drivers require so-called "I2C algorithm" modules to work. These are basically software-only abstractions of generic I2C interfaces. This option will autoselect them so that you don't have to care. In doubt, say Y.
+CONFIG_I2C_ALGOBIT=m    I2C bit-banging interfaces
+
+#
+# I2C Hardware Bus support
+#
+
+#
+# PC SMBus host controller drivers
+#
+CONFIG_I2C_I801=m
+
+#
+# ACPI drivers
+#
+
+#
+# I2C system bus drivers (mostly embedded / system-on-chip)
+#
+
+#
+# External I2C/SMBus adapter drivers
+#
+
+#
+# Other I2C/SMBus bus drivers
+#
+
+#
+# PPS support
+#
+CONFIG_PPS=y
+
+#
+# PPS clients support
+#
+
+#
+# PPS generators support
+#
+
+#
+# PTP clock support
+#
+CONFIG_PTP_1588_CLOCK=y
+
+#
+# Enable PHYLIB and NETWORK_PHY_TIMESTAMPING to see the additional clocks.
+#
+CONFIG_ARCH_WANT_OPTIONAL_GPIOLIB=y Select this config option from the architecture Kconfig, if it is possible to use gpiolib on the architecture, but let the user decide whether to actually build it or not. Select this instead of ARCH_REQUIRE_GPIOLIB, if your architecture does not depend on GPIOs being available, but rather let the user decide whether he needs it or not.
+CONFIG_POWER_SUPPLY=y   Say Y here to enable power supply class support. This allows power supply (batteries, AC, USB) monitoring by userspace via sysfs and uevent (if available) and/or APM kernel interface (if selected below).
+CONFIG_HWMON=y  Hardware monitoring devices let you monitor the hardware health of a system. Most modern motherboards include such a device. It can include temperature sensors, voltage sensors, fan speed sensors and various additional features such as the ability to control the speed of the fans. If you want this support you should say Y here and also to the specific driver(s) for your sensors chip(s) below.
+
+#
+# Native drivers
+#
+
+#
+# ACPI drivers
+#
+CONFIG_THERMAL=y    Generic Thermal Sysfs driver offers a generic mechanism for thermal management. Usually it's made up of one or more thermal zone and cooling device. Each thermal zone contains its own temperature, trip points, cooling devices. All platforms with ACPI thermal support can use this driver. If you want this support, you should say Y here.
+CONFIG_THERMAL_HWMON=y  In case a sensor is registered with the thermal framework, this option will also register it as a hwmon. The sensor will then have the common hwmon sysfs interface. Say 'Y' here if you want all thermal sensors to have hwmon sysfs interface too.
+CONFIG_THERMAL_DEFAULT_GOV_STEP_WISE=y  Use the step_wise governor as default. This throttles the devices one step at a time.
+CONFIG_THERMAL_GOV_STEP_WISE=y  Enable this to manage platform thermals using a simple linear governor.
+CONFIG_THERMAL_GOV_USER_SPACE=y Enable this to let the user space manage the platform thermals.
+CONFIG_X86_PKG_TEMP_THERMAL=m   Enable this to register CPU digital sensor for package temperature as thermal zone. Each package will have its own thermal zone. There are two trip points which can be set by user to get notifications via thermal notification methods.
+
+#
+# Texas Instruments thermal drivers
+#
+CONFIG_WATCHDOG=y   Watchdog Timer Support
+CONFIG_WATCHDOG_CORE=y  Say Y here if you want to use the new watchdog timer driver core. This driver provides a framework for all watchdog timer drivers and gives them the /dev/watchdog interface (and later also the sysfs interface).
+
+#
+# Watchdog Device Drivers
+#
+CONFIG_ITCO_WDT=y
+
+#
+# PCI-based Watchdog Cards
+#
+
+#
+# USB-based Watchdog Cards
+#
+CONFIG_SSB_POSSIBLE=y
+
+#
+# Sonics Silicon Backplane
+#
+CONFIG_SSB=y
+CONFIG_SSB_SPROM=y
+CONFIG_SSB_PCIHOST_POSSIBLE=y
+CONFIG_SSB_PCIHOST=y
+CONFIG_SSB_DRIVER_PCICORE_POSSIBLE=y
+CONFIG_SSB_DRIVER_PCICORE=y
+CONFIG_BCMA_POSSIBLE=y
+
+#
+# Broadcom specific AMBA
+#
+
+#
+# Multifunction device drivers
+#
+CONFIG_MFD_CORE=y
+CONFIG_LPC_ICH=y
+
+#
+# Graphics support
+#
+CONFIG_VGA_ARB=y    Some "legacy" VGA devices implemented on PCI typically have the same hard-decoded addresses as they did on ISA. When multiple PCI devices are accessed at same time they need some kind of coordination. Please see Documentation/vgaarbiter.txt for more details. Select this to enable VGA arbiter.
+CONFIG_VGA_ARB_MAX_GPUS=16  Reserves space in the kernel to maintain resource locking for multiple GPUS. The overhead for each GPU is very small.
+
+#
+# Direct Rendering Manager
+#
+
+#
+# Frame buffer Devices
+#
+CONFIG_FB=y
+CONFIG_FB_CMDLINE=y
+CONFIG_FB_BOOT_VESA_SUPPORT=y
+CONFIG_FB_CFB_FILLRECT=y
+CONFIG_FB_CFB_COPYAREA=y
+CONFIG_FB_CFB_IMAGEBLIT=y
+
+#
+# Frame buffer hardware drivers
+#
+CONFIG_FB_VESA=y    This is the frame buffer device driver for generic VESA 2.0 compliant graphic cards. The older VESA 1.2 cards are not supported. You will get a boot time penguin logo at no additional cost. Please read Documentation/fb/vesafb.txt. If unsure, say Y.
+CONFIG_FB_EFI=y This is the EFI frame buffer device driver. If the firmware on your platform is EFI 1.10 or UEFI 2.0, select Y to add support for using the EFI framebuffer as your console.
+
+#
+# Console display driver support
+#
+CONFIG_VGA_CONSOLE=y    Saying Y here will allow you to use Linux in text mode through a display that complies with the generic VGA standard. Virtually everyone wants that. Say Y.
+CONFIG_DUMMY_CONSOLE=y
+CONFIG_FRAMEBUFFER_CONSOLE=y    Low-level framebuffer-based console driver.
+CONFIG_LOGO=y   Enable and select frame buffer bootup logos.
+CONFIG_LOGO_LINUX_CLUT224=y Standard 224-color Linux logo
+
+#
+# HID support
+#
+CONFIG_HID=y
+CONFIG_HID_GENERIC=y
+
+#
+# Special HID drivers
+#
+CONFIG_HID_APPLE=y  Support for some Apple devices which less or more break HID specification. Say Y here if you want support for keyboards of Apple iBooks, PowerBooks, MacBooks, MacBook Pros and Apple Aluminum.
+CONFIG_HID_BELKIN=y Support for Belkin Flip KVM and Wireless keyboard.
+CONFIG_HID_CHERRY=y Support for Cherry Cymotion keyboard.
+CONFIG_HID_EZKEY=y  Support for Ezkey BTC 8193 keyboard.
+CONFIG_HID_LOGITECH=y   Support for Logitech devices that are not fully compliant with HID standard.
+CONFIG_LOGIWHEELS_FF=y  Logitech wheels configuration and force feedback support
+CONFIG_HID_MICROSOFT=y  Support for Microsoft devices that are not fully compliant with HID standard.
+CONFIG_HID_SUNPLUS=y    Support for Sunplus wireless desktop.
+
+#
+# USB HID support
+#
+CONFIG_USB_HID=y    Say Y here if you want to connect USB keyboards, mice, joysticks, graphic tablets, or any other HID based devices to your computer via USB, as well as Uninterruptible Power Supply (UPS) and monitor control devices. If unsure, say Y.
+
+#
+# I2C HID support
+#
+CONFIG_USB_OHCI_LITTLE_ENDIAN=y
+CONFIG_USB_SUPPORT=y    This option adds core support for Universal Serial Bus (USB). You will also need drivers from the following menu to make use of it.
+CONFIG_USB_COMMON=y
+CONFIG_USB_ARCH_HAS_HCD=y
+CONFIG_USB=y
+
+#
+# Miscellaneous USB options
+#
+CONFIG_USB_DEFAULT_PERSIST=y    Say N here if you don't want USB power session persistence enabled by default. If you say N it will make suspended USB devices that lose power get reenumerated as if they had been unplugged, causing any mounted filesystems to be lost. The persist feature can still be enabled for individual devices through the power/persist sysfs node. See Documentation/driver-api/usb/persist.rst for more info. If you have any questions about this, say Y here, only say N if you know exactly what you are doing.
+CONFIG_USB_FILTER=m
+
+#
+# USB Host Controller Drivers
+#
+CONFIG_USB_XHCI_HCD=y   The eXtensible Host Controller Interface (xHCI) is standard for USB 3.0 "SuperSpeed" host controller hardware. To compile this driver as a module, choose M here: the module will be called xhci-hcd.
+CONFIG_USB_XHCI_PCI=y
+CONFIG_USB_EHCI_HCD=y   The Enhanced Host Controller Interface (EHCI) is standard for USB 2.0 "high speed" (480 Mbit/sec, 60 Mbyte/sec) host controller hardware. If your USB host controller supports USB 2.0, you will likely want to configure this Host Controller Driver.
+CONFIG_USB_EHCI_PCI=y
+CONFIG_USB_OHCI_HCD=y   The Open Host Controller Interface (OHCI) is a standard for accessing USB 1.1 host controller hardware. It does more in hardware than Intel's UHCI specification. If your USB host controller follows the OHCI spec, say Y. On most non-x86 systems, and on x86 hardware that's not using a USB controller from Intel or VIA, this is appropriate. If your host controller doesn't use PCI, this is probably appropriate. For a PCI based system where you're not sure, the "lspci -v" entry will list the right "prog-if" for your USB controller(s): EHCI, OHCI, or UHCI.
+CONFIG_USB_OHCI_HCD_PCI=y   Enables support for PCI-bus plug-in USB controller cards. If unsure, say Y.
+CONFIG_USB_UHCI_HCD=y   The Universal Host Controller Interface is a standard by Intel for accessing the USB hardware in the PC (which is also called the USB host controller). If your USB host controller conforms to this standard, you may want to say Y, but see below. All recent boards with Intel PCI chipsets (like intel 430TX, 440FX, 440LX, 440BX, i810, i820) conform to this standard. Also all VIA PCI chipsets (like VIA VP2, VP3, MVP3, Apollo Pro, Apollo Pro II or Apollo Pro 133) and LEON/GRLIB SoCs with the GRUSBHC controller. If unsure, say Y.
+
+#
+# USB Device Class drivers
+#
+
+#
+# NOTE: USB_STORAGE depends on SCSI but BLK_DEV_SD may
+#
+
+#
+# also be needed; see USB_STORAGE Help for more info
+#
+CONFIG_USB_STORAGE=y    Say Y here if you want to connect USB mass storage devices to your computer's USB port. This is the driver you need for USB floppy drives, USB hard disks, USB tape drives, USB CD-ROMs, USB flash devices, and memory sticks, along with similar devices. This driver may also be used for some cameras and card readers.
+
+#
+# USB Imaging devices
+#
+
+#
+# USB port drivers
+#
+CONFIG_USB_SERIAL=y Say Y here if you have a USB device that provides normal serial ports, or acts like a serial device, and you want to connect it to your USB bus.
+CONFIG_USB_SERIAL_FTDI_SIO=y    Say Y here if you want to use a FTDI SIO single port USB to serial converter device. The implementation I have is called the USC-1000. This driver has also be tested with the 245 and 232 devices.
+
+#
+# USB Miscellaneous drivers
+#
+
+#
+# USB Physical Layer drivers
+#
+CONFIG_RTC_LIB=y
+CONFIG_RTC_CLASS=y  Generic RTC class support. If you say yes here, you will be allowed to plug one or more RTCs to your system. You will probably want to enable one or more of the interfaces below.
+CONFIG_RTC_SYSTOHC=y    If you say yes here, the system time (wall clock) will be stored in the RTC specified by RTC_HCTOSYS_DEVICE approximately every 11 minutes if userspace reports synchronized NTP status.
+CONFIG_RTC_HCTOSYS_DEVICE="rtc0"	The RTC device that will be used to (re)initialize the system clock, usually rtc0. Initialization is done when the system starts up, and when it resumes from a low power state. This device should record time in UTC, since the kernel won't do timezone correction.
+
+#
+# RTC interfaces
+#
+CONFIG_RTC_INTF_SYSFS=y
+CONFIG_RTC_INTF_PROC=y
+CONFIG_RTC_INTF_DEV=y
+
+#
+# I2C RTC drivers
+#
+
+#
+# SPI RTC drivers
+#
+
+#
+# Platform RTC drivers
+#
+CONFIG_RTC_DRV_CMOS=y
+
+#
+# on-CPU RTC drivers
+#
+
+#
+# HID Sensor RTC drivers
+#
+CONFIG_VIRTIO=m
+
+#
+# Virtio drivers
+#
+CONFIG_VIRTIO_PCI=m
+
+#
+# Microsoft Hyper-V guest support
+#
+
+#
+# SOC (System On Chip) specific Drivers
+#
+
+#
+# Hardware Spinlock drivers
+#
+
+#
+# Clock Source drivers
+#
+CONFIG_CLKEVT_I8253=y
+CONFIG_CLKBLD_I8253=y
+CONFIG_IOMMU_API=y
+CONFIG_IOMMU_SUPPORT=y
+CONFIG_DMAR_TABLE=y
+CONFIG_INTEL_IOMMU=y
+CONFIG_INTEL_IOMMU_FLOPPY_WA=y
+
+#
+# Remoteproc drivers
+#
+
+#
+# Rpmsg drivers
+#
+
+#
+# SOC (System On Chip) specific Drivers
+#
+
+#
+# PHY Subsystem
+#
+
+#
+# Firmware Drivers
+#
+CONFIG_DMIID=y  Say Y here if you want to query SMBIOS/DMI system identification information from userspace through /sys/class/dmi/id/ or if you want DMI-based module auto-loading.
+CONFIG_DMI_SCAN_MACHINE_NON_EFI_FALLBACK=y
+
+#
+# EFI (Extensible Firmware Interface) Support
+#
+CONFIG_EFI_VARS=y   If you say Y here, you are able to get EFI (Extensible Firmware Interface) variable information in /proc/efi/vars. You may read, write, create, and destroy EFI variables through this interface.
+CONFIG_EFI_RUNTIME_WRAPPERS=y
+
+#
+# File systems
+#
+CONFIG_DCACHE_WORD_ACCESS=y
+CONFIG_EXT2_FS=y    Ext2 is a standard Linux file system for hard disks. If unsure, say Y.
+CONFIG_EXT2_FS_XATTR=y  Extended attributes are name:value pairs associated with inodes by the kernel or by users (see the attr(5) manual page, or visit http://acl.bestbits.at/ for details). If unsure, say N.
+CONFIG_EXT2_FS_SECURITY=y   Security labels support alternative access control models implemented by security modules like SELinux. This option enables an extended attribute handler for file security labels in the ext2 filesystem. If you are not using a security module that requires using extended attributes for file security labels, say N.
+CONFIG_EXT4_FS=m    The Extended 4 (ext4) filesystem
+CONFIG_EXT4_USE_FOR_EXT23=y Allow the ext4 file system driver code to be used for ext2 or ext3 file system mounts. This allows users to reduce their compiled kernel size by using one file system driver for ext2, ext3, and ext4 file systems.
+CONFIG_EXT4_FS_POSIX_ACL=y  POSIX Access Control Lists (ACLs) support permissions for users and groups beyond the owner/group/world scheme. If you don't know what Access Control Lists are, say N
+CONFIG_EXT4_FS_SECURITY=y   Security labels support alternative access control models implemented by security modules like SELinux. This option enables an extended attribute handler for file security labels in the ext4 filesystem. If you are not using a security module that requires using extended attributes for file security labels, say N.
+CONFIG_JBD2=m   This is a generic journaling layer for block devices that support both 32-bit and 64-bit block numbers. It is currently used by the ext4dev/ext4 filesystem, but it could also be used to add journal support to other file systems or block devices such as RAID or LVM. If you are using ext4dev/ext4, you need to say Y here. If you are not using ext4dev/ext4 then you will probably want to say N.
+CONFIG_FS_MBCACHE=y
+CONFIG_FS_POSIX_ACL=y
+CONFIG_FILE_LOCKING=y   This option enables standard file locking support, required for filesystems like NFS and for the flock() system call. Disabling this option saves about 11k.
+CONFIG_FSNOTIFY=y
+CONFIG_DNOTIFY=y    Dnotify is a directory-based per-fd file change notification system that uses signals to communicate events to user-space. There exist superior alternatives, but some applications may still rely on dnotify. If unsure, say Y.
+CONFIG_INOTIFY_USER=y   Say Y here to enable inotify support for userspace, including the associated system calls. Inotify allows monitoring of both files and directories via a single open fd. Events are read from the file descriptor, which is also select()- and poll()-able. If unsure, say Y.
+CONFIG_OVERLAY_FS=y An overlay filesystem combines two filesystems - an 'upper' filesystem and a 'lower' filesystem. When a name exists in both filesystems, the object in the 'upper' filesystem is visible while the object in the 'lower' filesystem is either hidden or, in the case of directories, merged with the 'upper' object.
+
+#
+# Caches
+#
+
+#
+# CD-ROM/DVD Filesystems
+#
+CONFIG_ISO9660_FS=y
+
+#
+# DOS/FAT/NT Filesystems
+#
+CONFIG_FAT_FS=y
+CONFIG_MSDOS_FS=y
+CONFIG_VFAT_FS=y
+CONFIG_FAT_DEFAULT_CODEPAGE=850
+CONFIG_FAT_DEFAULT_IOCHARSET="iso8859-1"
+
+#
+# Pseudo filesystems
+#
+CONFIG_PROC_FS=y
+CONFIG_PROC_SYSCTL=y
+CONFIG_KERNFS=y
+CONFIG_SYSFS=y
+CONFIG_TMPFS=y
+CONFIG_MISC_FILESYSTEMS=y
+CONFIG_SQUASHFS=y
+CONFIG_SQUASHFS_FILE_CACHE=y
+CONFIG_SQUASHFS_DECOMP_SINGLE=y
+CONFIG_SQUASHFS_XATTR=y
+CONFIG_SQUASHFS_ZLIB=y
+CONFIG_SQUASHFS_XZ=y
+CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE=3
+CONFIG_NLS=y
+CONFIG_NLS_DEFAULT="iso8859-1"
+CONFIG_NLS_CODEPAGE_437=y
+CONFIG_NLS_CODEPAGE_850=y
+CONFIG_NLS_ISO8859_1=y
+CONFIG_NLS_ISO8859_15=y
+CONFIG_NLS_UTF8=y
+
+#
+# Kernel hacking
+#
+CONFIG_TRACE_IRQFLAGS_SUPPORT=y
+
+#
+# printk and dmesg options
+#
+CONFIG_PRINTK_TIME=y
+CONFIG_MESSAGE_LOGLEVEL_DEFAULT=4
+CONFIG_DYNAMIC_DEBUG=y
+
+#
+# Compile-time checks and compiler options
+#
+CONFIG_ENABLE_WARN_DEPRECATED=y	Enable the __deprecated logic in the kernel build. Disable this to suppress the "warning: 'foo' is deprecated (declared at kernel/power/somefile.c:1234)" messages.
+CONFIG_ENABLE_MUST_CHECK=y	Enable the __must_check logic in the kernel build. Disable this to suppress the "warning: ignoring return value of 'foo', declared with attribute warn_unused_result" messages.
+CONFIG_FRAME_WARN=1024	Tell gcc to warn at build time for stack frames larger than this. Setting this too low will cause a lot of warnings. Setting it to 0 disables the warning. Requires gcc 4.4
+CONFIG_UNUSED_SYMBOLS=y	Unused but exported symbols make the kernel needlessly bigger. For that reason most of these unused exports will soon be removed.
+CONFIG_DEBUG_FS=y	debugfs is a virtual file system that kernel developers use to put debugging files into. Enable this option to be able to read and write to these files. If unsure, say N.
+CONFIG_ARCH_WANT_FRAME_POINTERS=y
+CONFIG_FRAME_POINTER=y	If you say N here, the resulting kernel will be slightly smaller and faster. However, if neither FRAME_POINTER nor ARM_UNWIND are enabled, when a problem occurs with the kernel, the information that is reported is severely limited.
+CONFIG_MAGIC_SYSRQ=y	If you say Y here, you will have some control over the system even if the system crashes for example during kernel debugging. This is accomplished by pressing various keys while holding SysRq (Alt+PrintScreen).
+CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x1	Specifies which SysRq key functions are enabled by default. This may be set to 1 or 0 to enable or disable them all, or to a bitmask as described in Documentation/admin-guide/sysrq.rst.
+CONFIG_DEBUG_KERNEL=y	Say Y here if you are developing drivers or trying to debug and identify kernel problems.
+
+#
+# Memory Debugging
+#
+CONFIG_HAVE_DEBUG_KMEMLEAK=y
+CONFIG_DEBUG_STACK_USAGE=y  Enables the display of the minimum amount of free stack which each task has ever had available in the sysrq-T output.
+CONFIG_HAVE_DEBUG_STACKOVERFLOW=y
+CONFIG_DEBUG_STACKOVERFLOW=y    Make extra checks for space avaliable on stack in some critical functions. This will cause kernel to run a bit slower, but will catch most of kernel stack overruns and exit gracefuly. Say Y if you are unsure.
+CONFIG_HAVE_ARCH_KMEMCHECK=y
+
+#
+# Debug Lockups and Hangs
+#
+CONFIG_PANIC_ON_OOPS_VALUE=0
+CONFIG_PANIC_TIMEOUT=0  Set the timeout value (in seconds) until a reboot occurs when the the kernel panics. If n = 0, then we wait forever. A timeout value n > 0 will wait n seconds before rebooting, while a timeout value n < 0 will reboot immediately.
+CONFIG_SCHEDSTATS=y
+CONFIG_TIMER_STATS=y
+
+#
+# Lock Debugging (spinlocks, mutexes, etc...)
+#
+CONFIG_STACKTRACE=y This option causes the kernel to create a /proc/pid/stack for every process, showing its current stack trace. It is also used by various kernel debugging features that require stack trace generation.
+CONFIG_DEBUG_BUGVERBOSE=y   Say Y here to make BUG() panics output the file name and line number of the BUG call as well as the EIP and oops trace. This aids debugging but costs about 70-100K of memory.
+CONFIG_DEBUG_LIST=y Enable this to turn on extended checks in the linked-list walking routines. If unsure, say N.
+
+#
+# RCU Debugging
+#
+CONFIG_RCU_CPU_STALL_TIMEOUT=60 If a given RCU grace period extends more than the specified number of seconds, a CPU stall warning is printed. If the RCU grace period persists, additional CPU stall warnings are printed at more widely spaced intervals.
+CONFIG_ARCH_HAS_DEBUG_STRICT_USER_COPY_CHECKS=y
+CONFIG_USER_STACKTRACE_SUPPORT=y
+CONFIG_NOP_TRACER=y
+CONFIG_HAVE_FUNCTION_TRACER=y
+CONFIG_HAVE_FUNCTION_GRAPH_TRACER=y
+CONFIG_HAVE_FUNCTION_GRAPH_FP_TEST=y
+CONFIG_HAVE_DYNAMIC_FTRACE=y
+CONFIG_HAVE_DYNAMIC_FTRACE_WITH_REGS=y
+CONFIG_HAVE_FTRACE_MCOUNT_RECORD=y
+CONFIG_HAVE_SYSCALL_TRACEPOINTS=y
+CONFIG_HAVE_FENTRY=y
+CONFIG_HAVE_C_RECORDMCOUNT=y
+CONFIG_TRACE_CLOCK=y
+CONFIG_RING_BUFFER=y
+CONFIG_EVENT_TRACING=y
+CONFIG_CONTEXT_SWITCH_TRACER=y
+CONFIG_TRACING=y
+CONFIG_GENERIC_TRACER=y
+CONFIG_TRACING_SUPPORT=y
+CONFIG_FTRACE=y
+CONFIG_FUNCTION_TRACER=y
+CONFIG_FUNCTION_GRAPH_TRACER=y
+CONFIG_BRANCH_PROFILE_NONE=y
+CONFIG_STACK_TRACER=y
+CONFIG_BLK_DEV_IO_TRACE=y
+CONFIG_KPROBE_EVENT=y
+CONFIG_PROBE_EVENTS=y
+CONFIG_DYNAMIC_FTRACE=y
+CONFIG_DYNAMIC_FTRACE_WITH_REGS=y
+CONFIG_FTRACE_MCOUNT_RECORD=y
+
+#
+# Runtime Testing
+#
+CONFIG_HAVE_ARCH_KGDB=y
+CONFIG_STRICT_DEVMEM=y	If this option is disabled, you allow userspace (root) access to all of memory, including kernel and userspace memory. Accidental access to this is obviously disastrous, but specific access can be used by people debugging the kernel. If in doubt, say Y.
+CONFIG_X86_VERBOSE_BOOTUP=y
+CONFIG_EARLY_PRINTK=y
+CONFIG_EARLY_PRINTK_DBGP=y
+CONFIG_X86_PTDUMP=y
+CONFIG_DOUBLEFAULT=y
+CONFIG_HAVE_MMIOTRACE_SUPPORT=y
+CONFIG_IO_DELAY_TYPE_0X80=0
+CONFIG_IO_DELAY_TYPE_0XED=1
+CONFIG_IO_DELAY_TYPE_UDELAY=2
+CONFIG_IO_DELAY_TYPE_NONE=3
+CONFIG_IO_DELAY_0X80=y
+CONFIG_DEFAULT_IO_DELAY_TYPE=0
+CONFIG_DEBUG_BOOT_PARAMS=y
+
+#
+# Security options
+#
+
+#
+# Grsecurity
+#
+CONFIG_PAX_KERNEXEC_PLUGIN=y	Implements a least privilege protection for memory pages
+CONFIG_PAX_PER_CPU_PGD=y
+CONFIG_TASK_SIZE_MAX_SHIFT=42
+CONFIG_PAX_USERCOPY_SLABS=y
+CONFIG_GRKERNSEC=y	Grsecurity
+CONFIG_GRKERNSEC_CONFIG_CUSTOM=y	Configuration Method Custom
+CONFIG_GRKERNSEC_PROC_GID=10001	GID exempted from /proc restrictions
+
+#
+# Customize Configuration
+#
+
+#
+# PaX
+#
+CONFIG_PAX=y	Enable various PaX features
+
+#
+# PaX Control
+#
+CONFIG_PAX_SOFTMODE=y	Support soft mode
+CONFIG_PAX_EI_PAX=y	Use legacy ELF header marking
+CONFIG_PAX_PT_PAX_FLAGS=y	Use ELF program header marking
+CONFIG_PAX_HAVE_ACL_FLAGS=y	MAC system integration direct
+
+#
+# Non-executable pages
+#
+CONFIG_PAX_NOEXEC=y	Enforce non-executable pages
+CONFIG_PAX_PAGEEXEC=y	Paging based non-executable pages
+CONFIG_PAX_MPROTECT=y	Restrict mprotect()
+CONFIG_PAX_KERNEXEC=y	Enforce non-executable kernel pages
+CONFIG_PAX_KERNEXEC_PLUGIN_METHOD_BTS=y	Return Address Instrumentation Method bts
+CONFIG_PAX_KERNEXEC_PLUGIN_METHOD="bts"	Return Address Instrumentation Method bts
+
+#
+# Address Space Layout Randomization
+#
+CONFIG_PAX_ASLR=y	Address Space Layout Randomization
+CONFIG_PAX_RANDUSTACK=y	Randomize user stack base
+CONFIG_PAX_RANDMMAP=y	Randomize mmap() base
+
+#
+# Miscellaneous hardening features
+#
+CONFIG_PAX_MEMORY_SANITIZE=y	Sanitize all freed memory
+CONFIG_PAX_MEMORY_STACKLEAK=y	Sanitize kernel stack
+CONFIG_PAX_CONSTIFY_PLUGIN=y	Automatically constify eligible structures
+CONFIG_PAX_USERCOPY=y	Harden heap object copies between kernel and userland
+CONFIG_PAX_SIZE_OVERFLOW=y	Prevent various integer overflows in function size parameters
+
+#
+# Memory Protections
+#
+CONFIG_GRKERNSEC_KMEM=y	Deny reading/writing to /dev/kmem, /dev/mem, and /dev/port
+CONFIG_GRKERNSEC_IO=y	Disable privileged I/O
+CONFIG_GRKERNSEC_PERF_HARDEN=y	Disable unprivileged PERF_EVENTS usage by default
+CONFIG_GRKERNSEC_RAND_THREADSTACK=y	Insert random gaps between thread stacks
+CONFIG_GRKERNSEC_PROC_MEMMAP=y	Harden ASLR against information leaks and entropy reduction
+CONFIG_GRKERNSEC_BRUTE=y	Deter exploit bruteforcing
+CONFIG_GRKERNSEC_MODHARDEN=y	Harden module auto-loading
+CONFIG_GRKERNSEC_KERN_LOCKOUT=y	Active kernel exploit response
+
+#
+# Role Based Access Control Options
+#
+CONFIG_GRKERNSEC_NO_RBAC=y	Disable RBAC system
+CONFIG_GRKERNSEC_ACL_MAXTRIES=3	Maximum tries before password lockout
+CONFIG_GRKERNSEC_ACL_TIMEOUT=30	Time to wait after max password tries, in seconds
+
+#
+# Filesystem Protections
+#
+CONFIG_GRKERNSEC_PROC=y	Restrict /proc to user only
+CONFIG_GRKERNSEC_PROC_USERGROUP=y	Allow special group
+CONFIG_GRKERNSEC_PROC_ADD=y	Additional restrictions
+CONFIG_GRKERNSEC_LINK=y	Linking restrictions
+CONFIG_GRKERNSEC_FIFO=y	FIFO restrictions
+CONFIG_GRKERNSEC_ROFS=y	Runtime read-only mount protection
+CONFIG_GRKERNSEC_CHROOT=y	Chroot jail restrictions
+CONFIG_GRKERNSEC_CHROOT_MOUNT=y	Deny mounts
+CONFIG_GRKERNSEC_CHROOT_DOUBLE=y	Deny double-chroots
+CONFIG_GRKERNSEC_CHROOT_PIVOT=y	Deny pivot_root in chroot
+CONFIG_GRKERNSEC_CHROOT_CHDIR=y	Enforce chdir("/")
+CONFIG_GRKERNSEC_CHROOT_CHMOD=y	Deny (f)chmod +s
+CONFIG_GRKERNSEC_CHROOT_FCHDIR=y	Deny fchdir out of chroot
+CONFIG_GRKERNSEC_CHROOT_MKNOD=y	Deny mknod
+CONFIG_GRKERNSEC_CHROOT_SHMAT=y	Deny shmat() out of chroot
+CONFIG_GRKERNSEC_CHROOT_UNIX=y	Deny access to abstract AF_UNIX sockets out of chroot
+CONFIG_GRKERNSEC_CHROOT_FINDTASK=y	Protect outside processes
+CONFIG_GRKERNSEC_CHROOT_NICE=y	Restrict priority changes
+CONFIG_GRKERNSEC_CHROOT_SYSCTL=y	Deny sysctl writes
+CONFIG_GRKERNSEC_CHROOT_RENAME=y
+CONFIG_GRKERNSEC_CHROOT_CAPS=y	Capability restrictions
+
+#
+# Kernel Auditing
+#
+CONFIG_GRKERNSEC_EXECLOG=y	Exec logging
+CONFIG_GRKERNSEC_RESLOG=y	Resource logging
+CONFIG_GRKERNSEC_CHROOT_EXECLOG=y	Log execs within chroot
+CONFIG_GRKERNSEC_AUDIT_PTRACE=y	Ptrace logging
+CONFIG_GRKERNSEC_AUDIT_CHDIR=y	Chdir logging
+CONFIG_GRKERNSEC_AUDIT_MOUNT=y	(Un)Mount logging
+CONFIG_GRKERNSEC_SIGNAL=y	Signal logging
+CONFIG_GRKERNSEC_FORKFAIL=y	Fork failure logging
+CONFIG_GRKERNSEC_TIME=y	Time change logging
+CONFIG_GRKERNSEC_RWXMAP_LOG=y	Denied RWX mmap/mprotect logging
+
+#
+# Executable Protections
+#
+CONFIG_GRKERNSEC_DMESG=y	Dmesg(8) restriction
+CONFIG_GRKERNSEC_HARDEN_PTRACE=y	Deter ptrace-based process snooping
+CONFIG_GRKERNSEC_PTRACE_READEXEC=y	Require read access to ptrace sensitive binaries
+CONFIG_GRKERNSEC_HARDEN_IPC=y	Disallow access to overly-permissive IPC objects
+
+#
+# Network Protections
+#
+CONFIG_GRKERNSEC_SOCKET=y	Socket restrictions
+CONFIG_GRKERNSEC_SOCKET_ALL=y	Deny any sockets to group
+CONFIG_GRKERNSEC_SOCKET_ALL_GID=10004	GID to deny all sockets for
+CONFIG_GRKERNSEC_SOCKET_CLIENT=y	Deny client sockets to group
+CONFIG_GRKERNSEC_SOCKET_CLIENT_GID=10003	GID to deny client sockets for
+CONFIG_GRKERNSEC_SOCKET_SERVER=y	Deny server sockets to group
+CONFIG_GRKERNSEC_SOCKET_SERVER_GID=10002	GID to deny server sockets for
+
+#
+# Physical Protections
+#
+
+#
+# Sysctl Support
+#
+CONFIG_GRKERNSEC_SYSCTL=y	Sysctl support
+
+#
+# Logging Options
+#
+CONFIG_GRKERNSEC_FLOODTIME=10	Seconds in between log messages (minimum)
+CONFIG_GRKERNSEC_FLOODBURST=15	Number of messages in a burst (maximum)
+CONFIG_SECURITY=y	This allows you to choose different security modules to be configured into your kernel. If this option is not selected, the default Linux security model will be used. If you are unsure how to answer this question, answer N.
+CONFIG_SECURITYFS=y	This will build the securityfs filesystem. It is currently used by the TPM bios character driver and IMA, an integrity provider. It is not used by SELinux or SMACK. If you are unsure how to answer this question, answer N.
+CONFIG_INTEGRITY=y	This option enables the integrity subsystem, which is comprised of a number of different components including the Integrity Measurement Architecture (IMA), Extended Verification Module (EVM), IMA-appraisal extension, digital signature verification extension and audit measurement log support.
+CONFIG_DEFAULT_SECURITY_DAC=y
+CONFIG_DEFAULT_SECURITY=""
+CONFIG_CRYPTO=y	This option provides the core Cryptographic API.
+
+#
+# Crypto core or helper
+#
+CONFIG_CRYPTO_ALGAPI=y	This option provides the API for cryptographic algorithms.
+CONFIG_CRYPTO_ALGAPI2=y
+CONFIG_CRYPTO_AEAD=y
+CONFIG_CRYPTO_AEAD2=y
+CONFIG_CRYPTO_BLKCIPHER=y
+CONFIG_CRYPTO_BLKCIPHER2=y
+CONFIG_CRYPTO_HASH=y
+CONFIG_CRYPTO_HASH2=y
+CONFIG_CRYPTO_RNG=y
+CONFIG_CRYPTO_RNG2=y
+CONFIG_CRYPTO_PCOMP=m
+CONFIG_CRYPTO_PCOMP2=y
+CONFIG_CRYPTO_MANAGER=y
+CONFIG_CRYPTO_MANAGER2=y
+CONFIG_CRYPTO_USER=y
+CONFIG_CRYPTO_GF128MUL=y
+CONFIG_CRYPTO_NULL=y
+CONFIG_CRYPTO_PCRYPT=y
+CONFIG_CRYPTO_WORKQUEUE=y
+CONFIG_CRYPTO_AUTHENC=y
+
+#
+# Authenticated Encryption with Associated Data
+#
+CONFIG_CRYPTO_CCM=y	Support for Counter with CBC MAC. Required for IPsec.
+CONFIG_CRYPTO_GCM=y	Support for Galois/Counter Mode (GCM) and Galois Message Authentication Code (GMAC). Required for IPSec.
+CONFIG_CRYPTO_SEQIV=y	This IV generator generates an IV based on a sequence number by xoring it with a salt. This algorithm is mainly useful for CTR
+
+#
+# Block modes
+#
+CONFIG_CRYPTO_CBC=y	CBC: Cipher Block Chaining mode This block cipher algorithm is required for IPSec.
+CONFIG_CRYPTO_CTR=y	CTR: Counter mode This block cipher algorithm is required for IPSec.
+CONFIG_CRYPTO_ECB=y	ECB: Electronic CodeBook mode This is the simplest block cipher algorithm. It simply encrypts the input block by block.
+CONFIG_CRYPTO_PCBC=y	PCBC: Propagating Cipher Block Chaining mode This block cipher algorithm is required for RxRPC.
+CONFIG_CRYPTO_XTS=y	XTS: IEEE1619/D16 narrow block cipher use with aes-xts-plain, key size 256, 384 or 512 bits. This implementation currently can't handle a sectorsize which is not a multiple of 16 bytes.
+
+#
+# Hash modes
+#
+CONFIG_CRYPTO_HMAC=y	HMAC: Keyed-Hashing for Message Authentication (RFC2104). This is required for IPSec.
+
+#
+# Digest
+#
+CONFIG_CRYPTO_CRC32C=y	Castagnoli, et al Cyclic Redundancy-Check Algorithm. Used by iSCSI for header and data digests and by others. See Castagnoli93. Module will be crc32c.
+CONFIG_CRYPTO_GHASH=y	GHASH is message digest algorithm for GCM (Galois/Counter Mode).
+CONFIG_CRYPTO_MD5=y	MD5 message digest algorithm (RFC1321).
+CONFIG_CRYPTO_RMD160=y	RIPEMD-160 is a 160-bit cryptographic hash function. It is intended to be used as a secure replacement for the 128-bit hash functions MD4, MD5 and it's predecessor RIPEMD (not to be confused with RIPEMD-128).
+CONFIG_CRYPTO_RMD320=y	RIPEMD-320 is an optional extension of RIPEMD-160 with a 320 bit hash. It is intended for applications that require longer hash-results, without needing a larger security level (than RIPEMD-160).
+CONFIG_CRYPTO_SHA1=y	SHA-1 secure hash standard (FIPS 180-1/DFIPS 180-2).
+CONFIG_CRYPTO_SHA1_X86_64=y	SHA-1 secure hash standard (FIPS 180-1/DFIPS 180-2). (64 bit mode)
+CONFIG_CRYPTO_SHA256=y	SHA256 secure hash standard (DFIPS 180-2).
+CONFIG_CRYPTO_SHA512=y	This version of SHA implements a 512 bit hash with 256 bits of security against collision attacks.
+
+#
+# Ciphers
+#
+CONFIG_CRYPTO_AES=y	AES cipher algorithms (FIPS-197). AES uses the Rijndael algorithm.
+CONFIG_CRYPTO_AES_MIN_KEYLEN=24
+CONFIG_CRYPTO_AES_X86_64=y	AES cipher algorithms (FIPS-197). AES uses the Rijndael algorithm. (64 bit mode)
+CONFIG_CRYPTO_DES=y	DES cipher algorithm (FIPS 46-2), and Triple DES EDE (FIPS 46-3).
+
+#
+# Compression
+#
+CONFIG_CRYPTO_DEFLATE=y	This is the Deflate algorithm (RFC1951), specified for use in IPSec with the IPCOMP protocol (RFC3173, RFC2394). You will most probably want this if using IPSec.
+CONFIG_CRYPTO_ZLIB=m	This is the zlib algorithm.
+CONFIG_CRYPTO_LZO=m	This is the LZO algorithm.
+
+#
+# Random Number Generation
+#
+CONFIG_HAVE_KVM=y
+CONFIG_BINARY_PRINTF=y
+
+#
+# Library routines
+#
+CONFIG_BITREVERSE=y
+CONFIG_GENERIC_STRNCPY_FROM_USER=y
+CONFIG_GENERIC_STRNLEN_USER=y
+CONFIG_GENERIC_NET_UTILS=y
+CONFIG_GENERIC_FIND_FIRST_BIT=y
+CONFIG_GENERIC_PCI_IOMAP=y
+CONFIG_GENERIC_IOMAP=y
+CONFIG_GENERIC_IO=y
+CONFIG_ARCH_USE_CMPXCHG_LOCKREF=y
+CONFIG_ARCH_HAS_FAST_MULTIPLIER=y
+CONFIG_CRC_CCITT=y
+CONFIG_CRC16=m
+CONFIG_CRC32=y
+CONFIG_CRC32_SLICEBY8=y
+CONFIG_LIBCRC32C=y
+CONFIG_ZLIB_INFLATE=y
+CONFIG_ZLIB_DEFLATE=y
+CONFIG_LZO_COMPRESS=m
+CONFIG_LZO_DECOMPRESS=m
+CONFIG_LZ4_DECOMPRESS=y
+CONFIG_XZ_DEC=y
+CONFIG_XZ_DEC_X86=y
+CONFIG_XZ_DEC_POWERPC=y
+CONFIG_XZ_DEC_IA64=y
+CONFIG_XZ_DEC_ARM=y
+CONFIG_XZ_DEC_ARMTHUMB=y
+CONFIG_XZ_DEC_SPARC=y
+CONFIG_XZ_DEC_BCJ=y
+CONFIG_DECOMPRESS_GZIP=y
+CONFIG_DECOMPRESS_LZ4=y
+CONFIG_HAS_IOMEM=y
+CONFIG_HAS_IOPORT_MAP=y
+CONFIG_HAS_DMA=y
+CONFIG_CHECK_SIGNATURE=y
+CONFIG_CPU_RMAP=y
+CONFIG_DQL=y
+CONFIG_GLOB=y
+CONFIG_NLATTR=y
+CONFIG_ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE=y
+CONFIG_AVERAGE=y
+CONFIG_UCS2_STRING=y
+CONFIG_FONT_SUPPORT=y
+CONFIG_FONT_8x8=y
+CONFIG_FONT_8x16=y
+CONFIG_ARCH_HAS_SG_CHAIN=y
+
